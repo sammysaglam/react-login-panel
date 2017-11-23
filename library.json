@@ -1,0 +1,12 @@
+{
+	"library":{
+		"name":"ReactLoginPanel" ,
+		"outputFilename":"react-login-panel" ,
+		"scssEntry":"ReactLoginPanel"
+	} ,
+	"redux":{
+		"name":"ReactLoginPanelRedux" ,
+		"outputFilename":"react-login-panel.redux" ,
+		"entryPath":"./src/ReactLoginPanel.redux.js"
+	}
+}

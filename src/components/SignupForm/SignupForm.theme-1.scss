@@ -1,0 +1,9 @@
+.signup-form {
+	@extend .forms-animation;
+
+	width:220px;
+
+	.pending {
+		outline: solid 2px #f60;
+	}
+}
