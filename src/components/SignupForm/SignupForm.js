@@ -78,7 +78,7 @@ export default class SignupForm extends React.Component {
 			let failuresExist = false;
 
 			each(asyncValidators , state => {
-				failuresExist = failuresExist || state.passed !== true
+				failuresExist = failuresExist || state.passed !== true;
 			});
 
 			return !failuresExist;
@@ -128,8 +128,8 @@ export default class SignupForm extends React.Component {
 
 					// if ready, then submit
 					if ( passedValidation() ) {
- submitFn();
-}
+						submitFn();
+					}
 				});
 
 			} else {
@@ -153,15 +153,15 @@ export default class SignupForm extends React.Component {
 
 		// if ready, then submit
 		if ( passedValidation() ) {
- submitFn();
-}
+			submitFn();
+		}
 	}
 
 	onSubmit(event) {
 		event.preventDefault();
 
 		this.validateAllFieldsAndSubmit(() => {
-			this.props.submitForm(this.state.customFields)
+			this.props.submitForm(this.state.customFields);
 		});
 	}
 
@@ -211,7 +211,7 @@ export default class SignupForm extends React.Component {
 									}
 								) ,
 								hasErrors ? field.errorFeedbackElement(errorCode) : null
-							]
+							];
 						})
 					}
 					<input type="submit" value={lang.signup}/>
