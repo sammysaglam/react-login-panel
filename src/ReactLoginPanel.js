@@ -23,6 +23,7 @@ class ReactLoginPanel extends React.Component {
 	render() {
 
 		const {
+			showFormTitles = true ,
 			loggedInUser ,
 			userLoggedInMessage ,
 			signout ,
@@ -71,6 +72,7 @@ class ReactLoginPanel extends React.Component {
 				<div className="forms">
 					{
 						loginFormFields && <LoginForm
+							showFormTitles={showFormTitles}
 							lang={this.lang}
 							showLoginForm={showLoginForm && !loggedInUser}
 							loggingIn={loggingIn}
@@ -82,6 +84,7 @@ class ReactLoginPanel extends React.Component {
 					}
 					{
 						signupFormFields && <SignupForm
+							showFormTitles={showFormTitles}
 							lang={this.lang}
 							showSignupForm={showSignupForm && !loggedInUser}
 							formFields={signupFormFields}
@@ -95,6 +98,7 @@ class ReactLoginPanel extends React.Component {
 }
 
 ReactLoginPanel.propTypes = {
+	showFormTitles:PropTypes.bool ,
 	lang:PropTypes.shape({
 		'login':PropTypes.string ,
 		'signup':PropTypes.string ,

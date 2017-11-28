@@ -166,7 +166,7 @@ export default class SignupForm extends React.Component {
 	}
 
 	render() {
-		const {lang , formFields , showSignupForm} = this.props;
+		const {showFormTitles , lang , formFields , showSignupForm} = this.props;
 		const {customFields} = this.state;
 		const {onSubmit , onFieldChange} = this;
 
@@ -177,7 +177,7 @@ export default class SignupForm extends React.Component {
 
 		return (
 			<div className={classNames}>
-				<h2>{lang.signup}</h2>
+				{showFormTitles && <h2>{lang.signup}</h2>}
 				<form onSubmit={onSubmit}>
 					{
 						formFields.map(field => {

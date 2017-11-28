@@ -149,6 +149,8 @@ var ReactLoginPanel = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var _props = this.props,
+			    _props$showFormTitles = _props.showFormTitles,
+			    showFormTitles = _props$showFormTitles === undefined ? true : _props$showFormTitles,
 			    loggedInUser = _props.loggedInUser,
 			    userLoggedInMessage = _props.userLoggedInMessage,
 			    signout = _props.signout,
@@ -189,6 +191,7 @@ var ReactLoginPanel = function (_React$Component) {
 					'div',
 					{ className: 'forms' },
 					loginFormFields && _react2.default.createElement(_LoginForm2.default, {
+						showFormTitles: showFormTitles,
 						lang: this.lang,
 						showLoginForm: showLoginForm && !loggedInUser,
 						loggingIn: loggingIn,
@@ -198,6 +201,7 @@ var ReactLoginPanel = function (_React$Component) {
 						loginFailedMessage: loginFailedMessage
 					}),
 					signupFormFields && _react2.default.createElement(_SignupForm2.default, {
+						showFormTitles: showFormTitles,
 						lang: this.lang,
 						showSignupForm: showSignupForm && !loggedInUser,
 						formFields: signupFormFields,
@@ -212,6 +216,7 @@ var ReactLoginPanel = function (_React$Component) {
 }(_react2.default.Component);
 
 ReactLoginPanel.propTypes = {
+	showFormTitles: _propTypes2.default.bool,
 	lang: _propTypes2.default.shape({
 		'login': _propTypes2.default.string,
 		'signup': _propTypes2.default.string,
@@ -316,6 +321,7 @@ var LoginForm = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var _props = this.props,
+			    showFormTitles = _props.showFormTitles,
 			    lang = _props.lang,
 			    formFields = _props.formFields,
 			    showLoginForm = _props.showLoginForm,
@@ -333,7 +339,7 @@ var LoginForm = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: classNames },
-				_react2.default.createElement(
+				showFormTitles && _react2.default.createElement(
 					'h2',
 					null,
 					lang.login
@@ -566,6 +572,7 @@ var SignupForm = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var _props = this.props,
+			    showFormTitles = _props.showFormTitles,
 			    lang = _props.lang,
 			    formFields = _props.formFields,
 			    showSignupForm = _props.showSignupForm;
@@ -581,7 +588,7 @@ var SignupForm = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: classNames },
-				_react2.default.createElement(
+				showFormTitles && _react2.default.createElement(
 					'h2',
 					null,
 					lang.signup

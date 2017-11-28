@@ -31,7 +31,7 @@ export default class LoginForm extends React.Component {
 
 	render() {
 
-		const {lang , formFields , showLoginForm , loggingIn , loginFailed , loginFailedMessage} = this.props;
+		const {showFormTitles , lang , formFields , showLoginForm , loggingIn , loginFailed , loginFailedMessage} = this.props;
 		const {onSubmit , onFieldChange} = this;
 
 		const classNames = [
@@ -43,7 +43,7 @@ export default class LoginForm extends React.Component {
 
 		return (
 			<div className={classNames}>
-				<h2>{lang.login}</h2>
+				{showFormTitles && <h2>{lang.login}</h2>}
 				{loginFailed && loginFailedMessage ?
 
 					(typeof loginFailedMessage === 'function' ? loginFailedMessage() : loginFailedMessage)
