@@ -90,7 +90,7 @@ ReactLoginPanel.propTypes = {
 	loggedInUser:PropTypes.oneOfType([
 		PropTypes.object
 	]) ,
-	userLoggedInMessage:oneOfType([
+	userLoggedInMessage:PropTypes.oneOfType([
 		PropTypes.func ,
 		PropTypes.object ,
 		PropTypes.string
@@ -107,7 +107,7 @@ ReactLoginPanel.propTypes = {
 	submitLoginForm:PropTypes.func ,
 	loggingIn:PropTypes.bool ,
 	loginFailed:PropTypes.func ,
-	loginFailedMessage:oneOfType([
+	loginFailedMessage:PropTypes.oneOfType([
 		PropTypes.func ,
 		PropTypes.object ,
 		PropTypes.string

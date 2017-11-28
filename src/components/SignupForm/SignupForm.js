@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import each from 'object-each';
 
 export default class SignupForm extends React.Component {
@@ -47,39 +46,13 @@ export default class SignupForm extends React.Component {
 		};
 
 		// run user-defined validation function
-		const validationResult = validator(newVal,asyncCallback);
-
-		console.log(typeof validationResult);
+		const validationResult = validator(newVal , asyncCallback);
 
 		// check if validator is async
 		if ( typeof validationResult === 'object' ) {
 
 			// set new validity state to 'pending'
 			newState.customFields[fieldId].isValid = 'pending';
-
-		// if a promise was returned, then handle
-		/*if ( validationResult.then ) {
-
-			// set new validity state to 'pending'
-			newState.customFields[fieldId].isValid = 'pending';
-
-			// handle async response only if field value of response is equal to input's current value (or else it means the promise has expired for an old value, and promise can be safely ignored)
-			validationResult.then(response => response.json()).then(response => {
-
-				const currentValue = this.state.customFields[fieldId] && this.state.customFields[fieldId].value ? this.state.customFields[fieldId].value : '';
-
-				if ( response.value === currentValue ) {
-					this.setState({
-						customFields:{
-							...this.state.customFields ,
-							[fieldId]:{
-								...this.state.customFields[fieldId] ,
-								isValid:response.isValid
-							}
-						}
-					});
-				}
-			});*/
 
 		} else {
 
@@ -114,7 +87,7 @@ export default class SignupForm extends React.Component {
 		formFields.forEach(field => {
 
 			// get current user input
-			const fieldValue = this.state.customFields[field.id] && this.state.customFields[field.id].value ? this.state.customFields[field.id].value : "";
+			const fieldValue = this.state.customFields[field.id] && this.state.customFields[field.id].value ? this.state.customFields[field.id].value : '';
 
 			// run validation function
 			const validationResult = field.validator(fieldValue);
@@ -134,7 +107,7 @@ export default class SignupForm extends React.Component {
 				validationResult.then(response => response.json()).then(response => {
 
 					// update state to display errors to user
-					const newState = {
+					const newStateAsync = {
 						customFields:{
 							...this.state.customFields ,
 							[field.id]:{
@@ -143,7 +116,7 @@ export default class SignupForm extends React.Component {
 							}
 						}
 					};
-					this.setState(newState);
+					this.setState(newStateAsync);
 
 					// store validity response
 					asyncValidators = {
@@ -154,7 +127,9 @@ export default class SignupForm extends React.Component {
 					};
 
 					// if ready, then submit
-					if ( passedValidation() ) submitFn();
+					if ( passedValidation() ) {
+ submitFn();
+}
 				});
 
 			} else {
@@ -177,7 +152,9 @@ export default class SignupForm extends React.Component {
 		this.setState(newState);
 
 		// if ready, then submit
-		if ( passedValidation() ) submitFn();
+		if ( passedValidation() ) {
+ submitFn();
+}
 	}
 
 	onSubmit(event) {

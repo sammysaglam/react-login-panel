@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 export default class LoginForm extends React.Component {
 	constructor(props) {
@@ -46,6 +45,7 @@ export default class LoginForm extends React.Component {
 			<div className={classNames}>
 				<h2>{lang.login}</h2>
 				{loginFailed && loginFailedMessage ?
+
 					(typeof loginFailedMessage === 'function' ? loginFailedMessage() : loginFailedMessage)
 					:
 					null

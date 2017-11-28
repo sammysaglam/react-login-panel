@@ -7,7 +7,7 @@
 		exports["ReactLoginPanel"] = factory(require("React"), require("PropTypes"));
 	else
 		root["ReactLoginPanel"] = factory(root["React"], root["PropTypes"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_1__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81,12 +81,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -100,7 +94,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -213,7 +207,7 @@ ReactLoginPanel.propTypes = {
 		'loggingIn': _propTypes2.default.string
 	}),
 	loggedInUser: _propTypes2.default.oneOfType([_propTypes2.default.object]),
-	userLoggedInMessage: oneOfType([_propTypes2.default.func, _propTypes2.default.object, _propTypes2.default.string]),
+	userLoggedInMessage: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.object, _propTypes2.default.string]),
 	signout: _propTypes2.default.func,
 	showLoginForm: _propTypes2.default.bool,
 	toggleLoginForm: _propTypes2.default.func,
@@ -224,7 +218,7 @@ ReactLoginPanel.propTypes = {
 	submitLoginForm: _propTypes2.default.func,
 	loggingIn: _propTypes2.default.bool,
 	loginFailed: _propTypes2.default.func,
-	loginFailedMessage: oneOfType([_propTypes2.default.func, _propTypes2.default.object, _propTypes2.default.string]),
+	loginFailedMessage: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.object, _propTypes2.default.string]),
 	showSignupForm: _propTypes2.default.bool,
 	toggleSignupForm: _propTypes2.default.func,
 	signupFormFields: _propTypes2.default.arrayOf(_propTypes2.default.shape({
@@ -237,6 +231,12 @@ ReactLoginPanel.propTypes = {
 };
 
 module.exports = ReactLoginPanel;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ }),
 /* 3 */
@@ -256,10 +256,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -382,10 +378,6 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 var _objectEach = __webpack_require__(5);
 
 var _objectEach2 = _interopRequireDefault(_objectEach);
@@ -447,33 +439,11 @@ var SignupForm = function (_React$Component) {
 			// run user-defined validation function
 			var validationResult = validator(newVal, asyncCallback);
 
-			console.log(typeof validationResult === 'undefined' ? 'undefined' : _typeof(validationResult));
-
 			// check if validator is async
 			if ((typeof validationResult === 'undefined' ? 'undefined' : _typeof(validationResult)) === 'object') {
 
 				// set new validity state to 'pending'
 				newState.customFields[fieldId].isValid = 'pending';
-
-				// if a promise was returned, then handle
-				/*if ( validationResult.then ) {
-    		// set new validity state to 'pending'
-    	newState.customFields[fieldId].isValid = 'pending';
-    		// handle async response only if field value of response is equal to input's current value (or else it means the promise has expired for an old value, and promise can be safely ignored)
-    	validationResult.then(response => response.json()).then(response => {
-    			const currentValue = this.state.customFields[fieldId] && this.state.customFields[fieldId].value ? this.state.customFields[fieldId].value : '';
-    			if ( response.value === currentValue ) {
-    			this.setState({
-    				customFields:{
-    					...this.state.customFields ,
-    					[fieldId]:{
-    						...this.state.customFields[fieldId] ,
-    						isValid:response.isValid
-    					}
-    				}
-    			});
-    		}
-    	});*/
 			} else {
 
 				// no async, so we can safely update the state immediately
@@ -512,7 +482,7 @@ var SignupForm = function (_React$Component) {
 			formFields.forEach(function (field) {
 
 				// get current user input
-				var fieldValue = _this3.state.customFields[field.id] && _this3.state.customFields[field.id].value ? _this3.state.customFields[field.id].value : "";
+				var fieldValue = _this3.state.customFields[field.id] && _this3.state.customFields[field.id].value ? _this3.state.customFields[field.id].value : '';
 
 				// run validation function
 				var validationResult = field.validator(fieldValue);
@@ -531,12 +501,12 @@ var SignupForm = function (_React$Component) {
 					}).then(function (response) {
 
 						// update state to display errors to user
-						var newState = {
+						var newStateAsync = {
 							customFields: _extends({}, _this3.state.customFields, _defineProperty({}, field.id, _extends({}, _this3.state.customFields[field.id], {
 								isValid: response.isValid
 							})))
 						};
-						_this3.setState(newState);
+						_this3.setState(newStateAsync);
 
 						// store validity response
 						asyncValidators = _extends({}, asyncValidators, _defineProperty({}, field.id, {
@@ -544,7 +514,9 @@ var SignupForm = function (_React$Component) {
 						}));
 
 						// if ready, then submit
-						if (passedValidation()) submitFn();
+						if (passedValidation()) {
+							submitFn();
+						}
 					});
 				} else {
 					booleanValidators = booleanValidators && validationResult === true;
@@ -563,7 +535,9 @@ var SignupForm = function (_React$Component) {
 			this.setState(newState);
 
 			// if ready, then submit
-			if (passedValidation()) submitFn();
+			if (passedValidation()) {
+				submitFn();
+			}
 		}
 	}, {
 		key: 'onSubmit',
