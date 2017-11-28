@@ -59,21 +59,25 @@ class ReactLoginPanel extends React.Component {
 					}
 				</div>
 				<div className="forms">
-					<LoginForm
-						lang={this.lang}
-						showLoginForm={showLoginForm && !loggedInUser}
-						loggingIn={loggingIn}
-						formFields={loginFormFields}
-						submitForm={submitLoginForm}
-						loginFailed={loginFailed}
-						loginFailedMessage={loginFailedMessage}
-					/>
-					<SignupForm
-						lang={this.lang}
-						showSignupForm={showSignupForm && !loggedInUser}
-						formFields={signupFormFields}
-						submitForm={submitSignupForm}
-					/>
+					{
+						loginFormFields && <LoginForm
+							lang={this.lang}
+							showLoginForm={showLoginForm && !loggedInUser}
+							loggingIn={loggingIn}
+							formFields={loginFormFields}
+							submitForm={submitLoginForm}
+							loginFailed={loginFailed}
+							loginFailedMessage={loginFailedMessage}
+						/>
+					}
+					{
+						signupFormFields && <SignupForm
+							lang={this.lang}
+							showSignupForm={showSignupForm && !loggedInUser}
+							formFields={signupFormFields}
+							submitForm={submitSignupForm}
+						/>
+					}
 				</div>
 			</div>
 		);

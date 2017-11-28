@@ -176,7 +176,7 @@ var ReactLoginPanel = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'forms' },
-					_react2.default.createElement(_LoginForm2.default, {
+					loginFormFields && _react2.default.createElement(_LoginForm2.default, {
 						lang: this.lang,
 						showLoginForm: showLoginForm && !loggedInUser,
 						loggingIn: loggingIn,
@@ -185,7 +185,7 @@ var ReactLoginPanel = function (_React$Component) {
 						loginFailed: loginFailed,
 						loginFailedMessage: loginFailedMessage
 					}),
-					_react2.default.createElement(_SignupForm2.default, {
+					signupFormFields && _react2.default.createElement(_SignupForm2.default, {
 						lang: this.lang,
 						showSignupForm: showSignupForm && !loggedInUser,
 						formFields: signupFormFields,
