@@ -217,7 +217,7 @@ ReactLoginPanel.propTypes = {
 	})),
 	submitLoginForm: _propTypes2.default.func,
 	loggingIn: _propTypes2.default.bool,
-	loginFailed: _propTypes2.default.func,
+	loginFailed: _propTypes2.default.bool,
 	loginFailedMessage: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.object, _propTypes2.default.string]),
 	showSignupForm: _propTypes2.default.bool,
 	toggleSignupForm: _propTypes2.default.func,

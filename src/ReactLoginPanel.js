@@ -106,7 +106,7 @@ ReactLoginPanel.propTypes = {
 	) ,
 	submitLoginForm:PropTypes.func ,
 	loggingIn:PropTypes.bool ,
-	loginFailed:PropTypes.func ,
+	loginFailed:PropTypes.bool ,
 	loginFailedMessage:PropTypes.oneOfType([
 		PropTypes.func ,
 		PropTypes.object ,
