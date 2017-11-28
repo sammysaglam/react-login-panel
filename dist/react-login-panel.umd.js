@@ -156,7 +156,7 @@ var ReactLoginPanel = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'react-login-panel' },
-				_react2.default.createElement(
+				loginFormFields && signupFormFields && _react2.default.createElement(
 					'div',
 					{ className: 'nav' },
 					loggedInUser ? [typeof userLoggedInMessage === 'function' ? userLoggedInMessage(loggedInUser) : userLoggedInMessage, _react2.default.createElement(

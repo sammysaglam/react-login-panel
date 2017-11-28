@@ -42,22 +42,32 @@ class ReactLoginPanel extends React.Component {
 
 		return (
 			<div className="react-login-panel">
-				<div className="nav">
-					{
-						loggedInUser ?
-							[
-								typeof userLoggedInMessage === 'function' ? userLoggedInMessage(loggedInUser) : userLoggedInMessage ,
-								<div key="signout" className="button" onClick={signout}>{this.lang.signout}</div>
-							]
+				{
+					loginFormFields
 
-							:
+					&&
 
-							[
-								<div key="login" className={'button' + (showLoginForm ? ' active' : '')} onClick={toggleLoginForm}>{this.lang.login}</div> ,
-								<div key="signup" className={'button' + (showSignupForm ? ' active' : '')} onClick={toggleSignupForm}>{this.lang.signup}</div>
-							]
-					}
-				</div>
+					signupFormFields
+
+					&&
+
+					<div className="nav">
+						{
+							loggedInUser ?
+								[
+									typeof userLoggedInMessage === 'function' ? userLoggedInMessage(loggedInUser) : userLoggedInMessage ,
+									<div key="signout" className="button" onClick={signout}>{this.lang.signout}</div>
+								]
+
+								:
+
+								[
+									<div key="login" className={'button' + (showLoginForm ? ' active' : '')} onClick={toggleLoginForm}>{this.lang.login}</div> ,
+									<div key="signup" className={'button' + (showSignupForm ? ' active' : '')} onClick={toggleSignupForm}>{this.lang.signup}</div>
+								]
+						}
+					</div>
+				}
 				<div className="forms">
 					{
 						loginFormFields && <LoginForm
