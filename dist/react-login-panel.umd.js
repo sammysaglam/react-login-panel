@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("React"), require("PropTypes"));
+		module.exports = factory(require("react"), require("prop-types"));
 	else if(typeof define === 'function' && define.amd)
-		define(["React", "PropTypes"], factory);
+		define(["react", "prop-types"], factory);
 	else if(typeof exports === 'object')
-		exports["ReactLoginPanel"] = factory(require("React"), require("PropTypes"));
+		exports["ReactLoginPanel"] = factory(require("react"), require("prop-types"));
 	else
-		root["ReactLoginPanel"] = factory(root["React"], root["PropTypes"]);
+		root["ReactLoginPanel"] = factory(root["react"], root["prop-types"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

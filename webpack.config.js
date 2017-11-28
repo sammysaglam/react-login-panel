@@ -131,8 +131,8 @@ module.exports = [
 			libraryTarget:'umd'
 		} ,
 		externals:{
-			'react':'React' ,
-			'prop-types':'PropTypes'
+			'react':'react' ,
+			'prop-types':'prop-types'
 		} ,
 		plugins:[
 			new ImageminPlugin()
@@ -157,10 +157,6 @@ module.exports = [
 			library:'ReactLoginPanelRedux' ,
 			libraryTarget:'var'
 		} ,
-		externals:{
-			'react':'React' ,
-			'prop-types':'PropTypes'
-		} ,
 		plugins:[
 			new ImageminPlugin()
 		] ,
@@ -182,10 +178,6 @@ module.exports = [
 			filename:'[name].umd.js' ,
 			library:'ReactLoginPanelRedux' ,
 			libraryTarget:'umd'
-		} ,
-		externals:{
-			'react':'React' ,
-			'prop-types':'PropTypes'
 		} ,
 		plugins:[
 			new ImageminPlugin()
