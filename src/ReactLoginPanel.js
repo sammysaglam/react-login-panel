@@ -89,7 +89,40 @@ ReactLoginPanel.propTypes = {
 	}) ,
 	loggedInUser:PropTypes.oneOfType([
 		PropTypes.object
-	])
+	]) ,
+	userLoggedInMessage:oneOfType([
+		PropTypes.func ,
+		PropTypes.object ,
+		PropTypes.string
+	]) ,
+	signout:PropTypes.func ,
+	showLoginForm:PropTypes.bool ,
+	toggleLoginForm:PropTypes.func ,
+	loginFormFields:PropTypes.arrayOf(
+		PropTypes.shape({
+			id:PropTypes.string ,
+			fields:PropTypes.object
+		})
+	) ,
+	submitLoginForm:PropTypes.func ,
+	loggingIn:PropTypes.bool ,
+	loginFailed:PropTypes.func ,
+	loginFailedMessage:oneOfType([
+		PropTypes.func ,
+		PropTypes.object ,
+		PropTypes.string
+	]) ,
+	showSignupForm:PropTypes.bool ,
+	toggleSignupForm:PropTypes.func ,
+	signupFormFields:PropTypes.arrayOf(
+		PropTypes.shape({
+			id:PropTypes.string ,
+			fields:PropTypes.object ,
+			validator:PropTypes.func ,
+			errorFeedbackElement:PropTypes.func
+		})
+	) ,
+	submitSignupForm:PropTypes.func
 };
 
 module.exports = ReactLoginPanel;
