@@ -1,3 +1,3 @@
-import ReactLoginPanel from './dist/react-login-panel-redux.umd';
+import ReactLoginPanel from './dist/react-login-panel.umd';
 
 export default ReactLoginPanel;
