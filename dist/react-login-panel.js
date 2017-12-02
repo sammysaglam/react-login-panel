@@ -230,7 +230,7 @@ ReactLoginPanel.propTypes = {
 	toggleLoginForm: _propTypes2.default.func,
 	loginFormFields: _propTypes2.default.arrayOf(_propTypes2.default.shape({
 		id: _propTypes2.default.string.isRequired,
-		element: _propTypes2.default.object.isRequired
+		element: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.func]).isRequired
 	})),
 	submitLoginForm: _propTypes2.default.func,
 	loggingIn: _propTypes2.default.bool,
@@ -240,7 +240,7 @@ ReactLoginPanel.propTypes = {
 	toggleSignupForm: _propTypes2.default.func,
 	signupFormFields: _propTypes2.default.arrayOf(_propTypes2.default.shape({
 		id: _propTypes2.default.string.isRequired,
-		element: _propTypes2.default.object.isRequired,
+		element: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.func]).isRequired,
 		validator: _propTypes2.default.func.isRequired,
 		errorFeedbackElement: _propTypes2.default.func.isRequired
 	})),

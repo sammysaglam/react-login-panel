@@ -119,7 +119,10 @@ ReactLoginPanel.propTypes = {
 	loginFormFields:PropTypes.arrayOf(
 		PropTypes.shape({
 			id:PropTypes.string.isRequired ,
-			element:PropTypes.object.isRequired
+			element:PropTypes.oneOfType([
+				PropTypes.object ,
+				PropTypes.func
+			]).isRequired
 		})
 	) ,
 	submitLoginForm:PropTypes.func ,
@@ -135,7 +138,10 @@ ReactLoginPanel.propTypes = {
 	signupFormFields:PropTypes.arrayOf(
 		PropTypes.shape({
 			id:PropTypes.string.isRequired ,
-			element:PropTypes.object.isRequired ,
+			element:PropTypes.oneOfType([
+				PropTypes.object ,
+				PropTypes.func
+			]).isRequired ,
 			validator:PropTypes.func.isRequired ,
 			errorFeedbackElement:PropTypes.func.isRequired
 		})
