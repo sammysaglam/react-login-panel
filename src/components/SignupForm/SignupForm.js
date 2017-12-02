@@ -180,11 +180,11 @@ export default class SignupForm extends React.Component {
 				{showFormTitles && <h2>{lang.signup}</h2>}
 				<form onSubmit={onSubmit}>
 					{
-						formFields.map(field => {
+						formFields.map(({id , element , validator , errorFeedbackElement}) => {
 
-							const validityPending = customFields[field.id] && customFields[field.id].isValid === 'pending';
-							const hasErrors = !validityPending && customFields[field.id] && customFields[field.id].isValid !== true;
-							const errorCode = hasErrors && customFields[field.id].isValid;
+							const validityPending = customFields[id] && customFields[id].isValid === 'pending';
+							const hasErrors = !validityPending && customFields[id] && customFields[id].isValid !== true;
+							const errorCode = hasErrors && customFields[id].isValid;
 
 							const fieldClassNames = [
 								validityPending ? 'pending' : null ,
@@ -192,25 +192,41 @@ export default class SignupForm extends React.Component {
 							].filter(className => className).join(' ');
 
 							return [
-								React.cloneElement(
-									field.element ,
-									{
-										key:field.id ,
-										className:(
-											(
-												(field.element.props.className ? (field.element.props.className + ' ') : '') + fieldClassNames
 
-											).trim()
-										) ,
-										onChange:event => {
-											onFieldChange(field.id , event.target.value , field.validator);
-											if ( typeof field.element.props.onChange === 'function' ) {
-												field.element.props.onChange(event);
+								typeof element === 'function' ?
+
+									React.cloneElement(
+										element({
+											onChange:newVal => {
+												onFieldChange(id , newVal , validator);
+											}
+										}) ,
+										{
+											key:id
+										}
+									)
+
+									:
+
+									React.cloneElement(
+										element ,
+										{
+											key:id ,
+											className:(
+												(
+													(element.props.className ? (element.props.className + ' ') : '') + fieldClassNames
+
+												).trim()
+											) ,
+											onChange:event => {
+												onFieldChange(id , event.target.value , validator);
+												if ( typeof element.props.onChange === 'function' ) {
+													element.props.onChange(event);
+												}
 											}
 										}
-									}
-								) ,
-								hasErrors ? field.errorFeedbackElement(errorCode) : null
+									) ,
+								hasErrors ? errorFeedbackElement(errorCode) : null
 							];
 						})
 					}

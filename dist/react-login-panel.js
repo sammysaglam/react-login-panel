@@ -348,12 +348,21 @@ var LoginForm = function (_React$Component) {
 				_react2.default.createElement(
 					'form',
 					{ onSubmit: onSubmit },
-					formFields.map(function (field) {
-						return _react2.default.cloneElement(field.element, {
-							key: field.id,
+					formFields.map(function (_ref) {
+						var id = _ref.id,
+						    element = _ref.element;
+						return typeof element === 'function' ? _react2.default.cloneElement(element({
+							onChange: function onChange(newVal) {
+								onFieldChange(id, newVal);
+							},
+							disabled: loggingIn
+						}), {
+							key: id
+						}) : _react2.default.cloneElement(element, {
+							key: id,
 							onChange: function onChange(event) {
-								onFieldChange(field.id, event.target.value, field.validator);
-								if (typeof field.element.props.onChange === 'function') {
+								onFieldChange(id, event.target.value);
+								if (typeof element.props.onChange === 'function') {
 									field.element.props.onChange(event);
 								}
 							},
@@ -596,26 +605,37 @@ var SignupForm = function (_React$Component) {
 				_react2.default.createElement(
 					'form',
 					{ onSubmit: onSubmit },
-					formFields.map(function (field) {
+					formFields.map(function (_ref) {
+						var id = _ref.id,
+						    element = _ref.element,
+						    validator = _ref.validator,
+						    errorFeedbackElement = _ref.errorFeedbackElement;
 
-						var validityPending = customFields[field.id] && customFields[field.id].isValid === 'pending';
-						var hasErrors = !validityPending && customFields[field.id] && customFields[field.id].isValid !== true;
-						var errorCode = hasErrors && customFields[field.id].isValid;
+
+						var validityPending = customFields[id] && customFields[id].isValid === 'pending';
+						var hasErrors = !validityPending && customFields[id] && customFields[id].isValid !== true;
+						var errorCode = hasErrors && customFields[id].isValid;
 
 						var fieldClassNames = [validityPending ? 'pending' : null, hasErrors ? 'error' : null].filter(function (className) {
 							return className;
 						}).join(' ');
 
-						return [_react2.default.cloneElement(field.element, {
-							key: field.id,
-							className: ((field.element.props.className ? field.element.props.className + ' ' : '') + fieldClassNames).trim(),
+						return [typeof element === 'function' ? _react2.default.cloneElement(element({
+							onChange: function onChange(newVal) {
+								onFieldChange(id, newVal, validator);
+							}
+						}), {
+							key: id
+						}) : _react2.default.cloneElement(element, {
+							key: id,
+							className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
 							onChange: function onChange(event) {
-								onFieldChange(field.id, event.target.value, field.validator);
-								if (typeof field.element.props.onChange === 'function') {
-									field.element.props.onChange(event);
+								onFieldChange(id, event.target.value, validator);
+								if (typeof element.props.onChange === 'function') {
+									element.props.onChange(event);
 								}
 							}
-						}), hasErrors ? field.errorFeedbackElement(errorCode) : null];
+						}), hasErrors ? errorFeedbackElement(errorCode) : null];
 					}),
 					_react2.default.createElement('input', { type: 'submit', value: lang.signup })
 				)
