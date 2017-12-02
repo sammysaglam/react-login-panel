@@ -1,6 +1,6 @@
 {
 	"name": "react-login-panel",
-	"version": "0.1.20",
+	"version": "0.1.21",
 	"main": "index.js",
 	"repository": "git@github.com:sammysaglam/react-login-panel.git",
 	"author": "Sammy Saglam <sami@saglam.tk>",
@@ -15,7 +15,8 @@
 		"test:watch": "npm test -- --watch"
 	},
 	"dependencies": {
-		"object-each": "^1.0.0",
+		"object-foreach": "^0.1.2",
+		"object.reduce": "^1.0.1",
 		"react": "^16.1.1",
 		"react-dom": "^16.1.1",
 		"redux-ducklings": "^1.1.0"

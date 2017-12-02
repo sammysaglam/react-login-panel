@@ -1,5 +1,5 @@
 import createReduxDuckling from 'redux-ducklings';
-import each from 'object-each';
+import each from 'object-foreach';
 
 const ReduxBundleCreator = (() => {
 

@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("prop-types"), require("object-each"));
+		module.exports = factory(require("react"), require("prop-types"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "prop-types", "object-each"], factory);
+		define(["react", "prop-types"], factory);
 	else if(typeof exports === 'object')
-		exports["ReactLoginPanel"] = factory(require("react"), require("prop-types"), require("object-each"));
+		exports["ReactLoginPanel"] = factory(require("react"), require("prop-types"));
 	else
-		root["ReactLoginPanel"] = factory(root["react"], root["prop-types"], root["object-each"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_5__) {
+		root["ReactLoginPanel"] = factory(root["react"], root["prop-types"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -393,9 +393,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _objectEach = __webpack_require__(5);
+var _object = __webpack_require__(5);
 
-var _objectEach2 = _interopRequireDefault(_objectEach);
+var _object2 = _interopRequireDefault(_object);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -484,13 +484,9 @@ var SignupForm = function (_React$Component) {
 			var passedValidation = function passedValidation() {
 				return booleanValidators && function () {
 
-					var failuresExist = false;
-
-					(0, _objectEach2.default)(asyncValidators, function (state) {
-						failuresExist = failuresExist || state.passed !== true;
-					});
-
-					return !failuresExist;
+					return !(0, _object2.default)(asyncValidators, function (failuresExist, state) {
+						return failuresExist || state.passed !== true;
+					}, false);
 				}();
 			};
 
@@ -640,9 +636,345 @@ exports.default = SignupForm;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * object.reduce <https://github.com/jonschlinkert/object.reduce>
+ *
+ * Copyright (c) 2014-2015, 2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+
+
+var makeIterator = __webpack_require__(6);
+var forOwn = __webpack_require__(9);
+
+module.exports = function reduce(target, fn, acc, thisArg) {
+  var first = arguments.length > 2;
+  if (target && !Object.keys(target).length && !first) {
+    return null;
+  }
+
+  var iterator = makeIterator(fn, thisArg);
+
+  forOwn(target, function(value, key, orig) {
+    if (!first) {
+      acc = value;
+      first = true;
+    } else {
+      acc = iterator(acc, value, key, orig);
+    }
+  });
+
+  return acc;
+};
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * make-iterator <https://github.com/jonschlinkert/make-iterator>
+ *
+ * Copyright (c) 2014, 2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+
+
+var typeOf = __webpack_require__(7);
+
+module.exports = function makeIterator(target, thisArg) {
+  switch (typeOf(target)) {
+    case 'undefined':
+    case 'null':
+      return noop;
+    case 'function':
+      // function is the first to improve perf (most common case)
+      // also avoid using `Function#call` if not needed, which boosts
+      // perf a lot in some cases
+      return (typeof thisArg !== 'undefined') ? function(val, i, arr) {
+        return target.call(thisArg, val, i, arr);
+      } : target;
+    case 'object':
+      return function(val) {
+        return deepMatches(val, target);
+      };
+    case 'regexp':
+      return function(str) {
+        return target.test(str);
+      };
+    case 'string':
+    case 'number':
+    default: {
+      return prop(target);
+    }
+  }
+};
+
+function containsMatch(array, value) {
+  var len = array.length;
+  var i = -1;
+
+  while (++i < len) {
+    if (deepMatches(array[i], value)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function matchArray(arr, value) {
+  var len = value.length;
+  var i = -1;
+
+  while (++i < len) {
+    if (!containsMatch(arr, value[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function matchObject(obj, value) {
+  for (var key in value) {
+    if (value.hasOwnProperty(key)) {
+      if (deepMatches(obj[key], value[key]) === false) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+/**
+ * Recursively compare objects
+ */
+
+function deepMatches(val, value) {
+  if (typeOf(val) === 'object') {
+    if (Array.isArray(val) && Array.isArray(value)) {
+      return matchArray(val, value);
+    } else {
+      return matchObject(val, value);
+    }
+  } else {
+    return val === value;
+  }
+}
+
+function prop(name) {
+  return function(obj) {
+    return obj[name];
+  };
+}
+
+function noop(val) {
+  return val;
+}
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isBuffer = __webpack_require__(8);
+var toString = Object.prototype.toString;
+
+/**
+ * Get the native `typeof` a value.
+ *
+ * @param  {*} `val`
+ * @return {*} Native javascript type
+ */
+
+module.exports = function kindOf(val) {
+  // primitivies
+  if (typeof val === 'undefined') {
+    return 'undefined';
+  }
+  if (val === null) {
+    return 'null';
+  }
+  if (val === true || val === false || val instanceof Boolean) {
+    return 'boolean';
+  }
+  if (typeof val === 'string' || val instanceof String) {
+    return 'string';
+  }
+  if (typeof val === 'number' || val instanceof Number) {
+    return 'number';
+  }
+
+  // functions
+  if (typeof val === 'function' || val instanceof Function) {
+    return 'function';
+  }
+
+  // array
+  if (typeof Array.isArray !== 'undefined' && Array.isArray(val)) {
+    return 'array';
+  }
+
+  // check for instances of RegExp and Date before calling `toString`
+  if (val instanceof RegExp) {
+    return 'regexp';
+  }
+  if (val instanceof Date) {
+    return 'date';
+  }
+
+  // other objects
+  var type = toString.call(val);
+
+  if (type === '[object RegExp]') {
+    return 'regexp';
+  }
+  if (type === '[object Date]') {
+    return 'date';
+  }
+  if (type === '[object Arguments]') {
+    return 'arguments';
+  }
+  if (type === '[object Error]') {
+    return 'error';
+  }
+
+  // buffer
+  if (isBuffer(val)) {
+    return 'buffer';
+  }
+
+  // es6: Map, WeakMap, Set, WeakSet
+  if (type === '[object Set]') {
+    return 'set';
+  }
+  if (type === '[object WeakSet]') {
+    return 'weakset';
+  }
+  if (type === '[object Map]') {
+    return 'map';
+  }
+  if (type === '[object WeakMap]') {
+    return 'weakmap';
+  }
+  if (type === '[object Symbol]') {
+    return 'symbol';
+  }
+
+  // typed arrays
+  if (type === '[object Int8Array]') {
+    return 'int8array';
+  }
+  if (type === '[object Uint8Array]') {
+    return 'uint8array';
+  }
+  if (type === '[object Uint8ClampedArray]') {
+    return 'uint8clampedarray';
+  }
+  if (type === '[object Int16Array]') {
+    return 'int16array';
+  }
+  if (type === '[object Uint16Array]') {
+    return 'uint16array';
+  }
+  if (type === '[object Int32Array]') {
+    return 'int32array';
+  }
+  if (type === '[object Uint32Array]') {
+    return 'uint32array';
+  }
+  if (type === '[object Float32Array]') {
+    return 'float32array';
+  }
+  if (type === '[object Float64Array]') {
+    return 'float64array';
+  }
+
+  // must be a plain object
+  return 'object';
+};
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * for-own <https://github.com/jonschlinkert/for-own>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+
+
+var forIn = __webpack_require__(10);
+var hasOwn = Object.prototype.hasOwnProperty;
+
+module.exports = function forOwn(obj, fn, thisArg) {
+  forIn(obj, function(val, key) {
+    if (hasOwn.call(obj, key)) {
+      return fn.call(thisArg, obj[key], key, obj);
+    }
+  });
+};
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * for-in <https://github.com/jonschlinkert/for-in>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+
+
+module.exports = function forIn(obj, fn, thisArg) {
+  for (var key in obj) {
+    if (fn.call(thisArg, obj[key], key, obj) === false) {
+      break;
+    }
+  }
+};
+
 
 /***/ })
 /******/ ]);

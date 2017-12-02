@@ -77,9 +77,9 @@ var _reduxDucklings = __webpack_require__(1);
 
 var _reduxDucklings2 = _interopRequireDefault(_reduxDucklings);
 
-var _objectEach = __webpack_require__(3);
+var _objectForeach = __webpack_require__(3);
 
-var _objectEach2 = _interopRequireDefault(_objectEach);
+var _objectForeach2 = _interopRequireDefault(_objectForeach);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -229,7 +229,7 @@ var ReduxBundleCreator = function () {
 
 						// create post data
 						var formData = new FormData();
-						(0, _objectEach2.default)(loginData, function (value, key) {
+						(0, _objectForeach2.default)(loginData, function (value, key) {
 							formData.append(key, value);
 						});
 
@@ -260,7 +260,7 @@ var ReduxBundleCreator = function () {
 
 						// create post data
 						var formData = new FormData();
-						(0, _objectEach2.default)(signupData, function (value, key) {
+						(0, _objectForeach2.default)(signupData, function (value, key) {
 							formData.append(key, value);
 						});
 
@@ -424,24 +424,26 @@ module.exports = createReduxDuckling;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = each;
 /**
- * Iterates over the object `obj` entries and
- * calls `fn(value, key, obj)` for each entry.
- *
- * @param {Object} obj
- * @param {Function} fn
+ * Executes a function on each of an objects own enumerable properties. The
+ *  callback function will receive three arguments: the value of the current
+ *  property, the name of the property, and the object being processed. This is
+ *  roughly equivalent to the signature for callbacks to
+ *  Array.prototype.forEach.
+ * @param {Object} obj The object to act on.
+ * @param {Function} callback The function to execute.
+ * @returns {Object} Returns the given object.
  */
-function each(obj, fn) {
-  for (let [key, value] of Object.entries(obj)) {
-    fn(value, key, obj);
-  }
-}
-
+function objectForeach(obj, callback) {
+    "use strict";
+    Object.keys(obj).forEach(function (prop) {
+        callback(obj[prop], prop, obj);
+    });
+    return obj;
+};
+module.exports = objectForeach;
 
 /***/ })
 /******/ ]);

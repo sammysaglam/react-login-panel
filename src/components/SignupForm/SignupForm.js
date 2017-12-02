@@ -1,5 +1,5 @@
 import React from 'react';
-import each from 'object-each';
+import reduce from 'object.reduce';
 
 export default class SignupForm extends React.Component {
 	constructor(props) {
@@ -75,13 +75,8 @@ export default class SignupForm extends React.Component {
 		// a function to check if ready to submit
 		const passedValidation = () => booleanValidators && (() => {
 
-			let failuresExist = false;
+			return !reduce(asyncValidators , (failuresExist , state) => failuresExist || state.passed !== true , false);
 
-			each(asyncValidators , state => {
-				failuresExist = failuresExist || state.passed !== true;
-			});
-
-			return !failuresExist;
 		})();
 
 		formFields.forEach(field => {
