@@ -191,43 +191,43 @@ export default class SignupForm extends React.Component {
 								hasErrors ? 'error' : null
 							].filter(className => className).join(' ');
 
-							return [
+							return (
+								<div key={id}>
+									{
 
-								typeof element === 'function' ?
+										typeof element === 'function' ?
 
-									React.cloneElement(
-										element({
-											onChange:newVal => {
-												onFieldChange(id , newVal , validator);
-											}
-										}) ,
-										{
-											key:id
-										}
-									)
-
-									:
-
-									React.cloneElement(
-										element ,
-										{
-											key:id ,
-											className:(
-												(
-													(element.props.className ? (element.props.className + ' ') : '') + fieldClassNames
-
-												).trim()
-											) ,
-											onChange:event => {
-												onFieldChange(id , event.target.value , validator);
-												if ( typeof element.props.onChange === 'function' ) {
-													element.props.onChange(event);
+											element({
+												onChange:newVal => {
+													onFieldChange(id , newVal , validator);
 												}
-											}
-										}
-									) ,
-								hasErrors ? errorFeedbackElement(errorCode) : null
-							];
+											})
+
+											:
+
+											React.cloneElement(
+												element ,
+												{
+													className:(
+														(
+															(element.props.className ? (element.props.className + ' ') : '') + fieldClassNames
+
+														).trim()
+													) ,
+													onChange:event => {
+														onFieldChange(id , event.target.value , validator);
+														if ( typeof element.props.onChange === 'function' ) {
+															element.props.onChange(event);
+														}
+													}
+												}
+											)
+									}
+									{
+										hasErrors ? errorFeedbackElement(errorCode) : null
+									}
+								</div>
+							);
 						})
 					}
 					<input type="submit" value={lang.signup}/>

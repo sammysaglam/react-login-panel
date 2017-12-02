@@ -608,22 +608,27 @@ var SignupForm = function (_React$Component) {
 							return className;
 						}).join(' ');
 
-						return [typeof element === 'function' ? _react2.default.cloneElement(element({
-							onChange: function onChange(newVal) {
-								onFieldChange(id, newVal, validator);
-							}
-						}), {
-							key: id
-						}) : _react2.default.cloneElement(element, {
-							key: id,
-							className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
-							onChange: function onChange(event) {
-								onFieldChange(id, event.target.value, validator);
-								if (typeof element.props.onChange === 'function') {
-									element.props.onChange(event);
+						return _react2.default.createElement(
+							'div',
+							{ key: id },
+							typeof element === 'function' ? _react2.default.cloneElement(element({
+								onChange: function onChange(newVal) {
+									onFieldChange(id, newVal, validator);
 								}
-							}
-						}), hasErrors ? errorFeedbackElement(errorCode) : null];
+							}), {
+								key: id
+							}) : _react2.default.cloneElement(element, {
+								key: id,
+								className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
+								onChange: function onChange(event) {
+									onFieldChange(id, event.target.value, validator);
+									if (typeof element.props.onChange === 'function') {
+										element.props.onChange(event);
+									}
+								}
+							}),
+							hasErrors ? errorFeedbackElement(errorCode) : null
+						);
 					}),
 					_react2.default.createElement('input', { type: 'submit', value: lang.signup })
 				)
