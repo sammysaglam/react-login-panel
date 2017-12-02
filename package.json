@@ -1,6 +1,6 @@
 {
 	"name": "react-login-panel",
-	"version": "0.1.21",
+	"version": "0.1.22",
 	"main": "index.js",
 	"repository": "git@github.com:sammysaglam/react-login-panel.git",
 	"author": "Sammy Saglam <sami@saglam.tk>",

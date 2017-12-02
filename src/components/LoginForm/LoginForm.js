@@ -52,34 +52,38 @@ export default class LoginForm extends React.Component {
 				}
 				<form onSubmit={onSubmit}>
 					{
-						formFields.map(({id , element}) => typeof element === 'function' ?
+						formFields.map(({id , element}) => (
 
-							React.cloneElement(
-								element({
-									onChange:newVal => {
-										onFieldChange(id , newVal);
-									} ,
-									disabled:loggingIn
-								}) , {
-									key:id
-								}
+								<div key={id}>
+									{
+
+										typeof element === 'function' ?
+
+											element({
+												onChange:newVal => {
+													onFieldChange(id , newVal);
+												} ,
+												disabled:loggingIn
+											})
+
+											:
+
+											React.cloneElement(
+												element ,
+												{
+													onChange:event => {
+														onFieldChange(id , event.target.value);
+														if ( typeof element.props.onChange === 'function' ) {
+															field.element.props.onChange(event);
+														}
+													} ,
+													disabled:loggingIn
+												}
+											)
+									}
+								</div>
 							)
-
-							:
-
-							React.cloneElement(
-								element ,
-								{
-									key:id ,
-									onChange:event => {
-										onFieldChange(id , event.target.value);
-										if ( typeof element.props.onChange === 'function' ) {
-											field.element.props.onChange(event);
-										}
-									} ,
-									disabled:loggingIn
-								}
-							))
+						)
 					}
 					<input
 						type="submit"

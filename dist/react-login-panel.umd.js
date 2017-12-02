@@ -339,23 +339,24 @@ var LoginForm = function (_React$Component) {
 					formFields.map(function (_ref) {
 						var id = _ref.id,
 						    element = _ref.element;
-						return typeof element === 'function' ? _react2.default.cloneElement(element({
-							onChange: function onChange(newVal) {
-								onFieldChange(id, newVal);
-							},
-							disabled: loggingIn
-						}), {
-							key: id
-						}) : _react2.default.cloneElement(element, {
-							key: id,
-							onChange: function onChange(event) {
-								onFieldChange(id, event.target.value);
-								if (typeof element.props.onChange === 'function') {
-									field.element.props.onChange(event);
-								}
-							},
-							disabled: loggingIn
-						});
+						return _react2.default.createElement(
+							'div',
+							{ key: id },
+							typeof element === 'function' ? element({
+								onChange: function onChange(newVal) {
+									onFieldChange(id, newVal);
+								},
+								disabled: loggingIn
+							}) : _react2.default.cloneElement(element, {
+								onChange: function onChange(event) {
+									onFieldChange(id, event.target.value);
+									if (typeof element.props.onChange === 'function') {
+										field.element.props.onChange(event);
+									}
+								},
+								disabled: loggingIn
+							})
+						);
 					}),
 					_react2.default.createElement('input', {
 						type: 'submit',
