@@ -132,7 +132,8 @@ module.exports = [
 		} ,
 		externals:{
 			'react':'react' ,
-			'prop-types':'prop-types'
+			'prop-types':'prop-types' ,
+			'object-each':'object-each'
 		} ,
 		plugins:[
 			new ImageminPlugin()

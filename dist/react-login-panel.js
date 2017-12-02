@@ -623,14 +623,11 @@ var SignupForm = function (_React$Component) {
 						return _react2.default.createElement(
 							'div',
 							{ key: id },
-							typeof element === 'function' ? _react2.default.cloneElement(element({
+							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {
 									onFieldChange(id, newVal, validator);
 								}
-							}), {
-								key: id
 							}) : _react2.default.cloneElement(element, {
-								key: id,
 								className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
 								onChange: function onChange(event) {
 									onFieldChange(id, event.target.value, validator);

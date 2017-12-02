@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("prop-types"));
+		module.exports = factory(require("react"), require("prop-types"), require("object-each"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "prop-types"], factory);
+		define(["react", "prop-types", "object-each"], factory);
 	else if(typeof exports === 'object')
-		exports["ReactLoginPanel"] = factory(require("react"), require("prop-types"));
+		exports["ReactLoginPanel"] = factory(require("react"), require("prop-types"), require("object-each"));
 	else
-		root["ReactLoginPanel"] = factory(root["react"], root["prop-types"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
+		root["ReactLoginPanel"] = factory(root["react"], root["prop-types"], root["object-each"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -611,14 +611,11 @@ var SignupForm = function (_React$Component) {
 						return _react2.default.createElement(
 							'div',
 							{ key: id },
-							typeof element === 'function' ? _react2.default.cloneElement(element({
+							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {
 									onFieldChange(id, newVal, validator);
 								}
-							}), {
-								key: id
 							}) : _react2.default.cloneElement(element, {
-								key: id,
 								className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
 								onChange: function onChange(event) {
 									onFieldChange(id, event.target.value, validator);
@@ -643,24 +640,9 @@ exports.default = SignupForm;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["default"] = each;
-/**
- * Iterates over the object `obj` entries and
- * calls `fn(value, key, obj)` for each entry.
- *
- * @param {Object} obj
- * @param {Function} fn
- */
-function each(obj, fn) {
-  for (let [key, value] of Object.entries(obj)) {
-    fn(value, key, obj);
-  }
-}
-
+module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
 
 /***/ })
 /******/ ]);
