@@ -118,8 +118,8 @@ ReactLoginPanel.propTypes = {
 	toggleLoginForm:PropTypes.func ,
 	loginFormFields:PropTypes.arrayOf(
 		PropTypes.shape({
-			id:PropTypes.string ,
-			fields:PropTypes.object
+			id:PropTypes.string.isRequired ,
+			element:PropTypes.object.isRequired
 		})
 	) ,
 	submitLoginForm:PropTypes.func ,
@@ -134,10 +134,10 @@ ReactLoginPanel.propTypes = {
 	toggleSignupForm:PropTypes.func ,
 	signupFormFields:PropTypes.arrayOf(
 		PropTypes.shape({
-			id:PropTypes.string ,
-			fields:PropTypes.object ,
-			validator:PropTypes.func ,
-			errorFeedbackElement:PropTypes.func
+			id:PropTypes.string.isRequired ,
+			element:PropTypes.object.isRequired ,
+			validator:PropTypes.func.isRequired ,
+			errorFeedbackElement:PropTypes.func.isRequired
 		})
 	) ,
 	submitSignupForm:PropTypes.func
