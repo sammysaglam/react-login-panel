@@ -352,7 +352,7 @@ var LoginForm = function (_React$Component) {
 						var id = _ref.id,
 						    element = _ref.element;
 						return _react2.default.createElement(
-							'div',
+							_react2.default.Fragment,
 							{ key: id },
 							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {
@@ -618,7 +618,7 @@ var SignupForm = function (_React$Component) {
 						}).join(' ');
 
 						return _react2.default.createElement(
-							'div',
+							_react2.default.Fragment,
 							{ key: id },
 							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {

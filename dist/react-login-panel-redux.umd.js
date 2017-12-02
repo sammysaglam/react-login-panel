@@ -7,7 +7,7 @@
 		exports["ReactLoginPanelRedux"] = factory();
 	else
 		root["ReactLoginPanelRedux"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

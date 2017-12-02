@@ -54,7 +54,7 @@ export default class LoginForm extends React.Component {
 					{
 						formFields.map(({id , element}) => (
 
-								<div key={id}>
+								<React.Fragment key={id}>
 									{
 
 										typeof element === 'function' ?
@@ -81,7 +81,7 @@ export default class LoginForm extends React.Component {
 												}
 											)
 									}
-								</div>
+								</React.Fragment>
 							)
 						)
 					}

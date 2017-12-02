@@ -187,7 +187,7 @@ export default class SignupForm extends React.Component {
 							].filter(className => className).join(' ');
 
 							return (
-								<div key={id}>
+								<React.Fragment key={id}>
 									{
 
 										typeof element === 'function' ?
@@ -221,7 +221,7 @@ export default class SignupForm extends React.Component {
 									{
 										hasErrors ? errorFeedbackElement(errorCode) : null
 									}
-								</div>
+								</React.Fragment>
 							);
 						})
 					}

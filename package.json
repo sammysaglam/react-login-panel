@@ -1,6 +1,6 @@
 {
 	"name": "react-login-panel",
-	"version": "0.1.22",
+	"version": "0.1.24",
 	"main": "index.js",
 	"repository": "git@github.com:sammysaglam/react-login-panel.git",
 	"author": "Sammy Saglam <sami@saglam.tk>",
@@ -17,8 +17,8 @@
 	"dependencies": {
 		"object-foreach": "^0.1.2",
 		"object.reduce": "^1.0.1",
-		"react": "^16.1.1",
-		"react-dom": "^16.1.1",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
 		"redux-ducklings": "^1.1.0"
 	},
 	"devDependencies": {
@@ -32,22 +32,22 @@
 		"copy-webpack-plugin": "^4.2.3",
 		"css-loader": "^0.28.7",
 		"enzyme": "^3.2.0",
-		"eslint": "^4.11.0",
+		"eslint": "^4.12.1",
 		"eslint-plugin-react": "^7.5.1",
 		"eslint-sammy-preset": "^1.0.5",
 		"extract-text-webpack-plugin": "^3.0.2",
 		"glob": "^7.1.2",
-		"html-minifier": "^3.5.6",
+		"html-minifier": "^3.5.7",
 		"imagemin-webpack-plugin": "^1.5.2",
 		"jest": "^21.2.1",
 		"jsonminify": "^0.4.1",
 		"node-sass": "^4.7.2",
 		"optimize-css-assets-webpack-plugin": "^3.2.0",
-		"react-test-renderer": "^16.1.1",
+		"react-test-renderer": "^16.2.0",
 		"sass-loader": "^6.0.6",
-		"uglifyjs-webpack-plugin": "^1.1.0",
+		"uglifyjs-webpack-plugin": "^1.1.2",
 		"url-loader": "^0.6.2",
-		"webpack": "^3.8.1",
-		"webpack-dev-server": "^2.9.4"
+		"webpack": "^3.9.1",
+		"webpack-dev-server": "^2.9.5"
 	}
 }

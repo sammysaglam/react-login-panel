@@ -7,7 +7,7 @@
 		exports["ReactLoginPanel"] = factory(require("react"), require("prop-types"));
 	else
 		root["ReactLoginPanel"] = factory(root["react"], root["prop-types"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -340,7 +340,7 @@ var LoginForm = function (_React$Component) {
 						var id = _ref.id,
 						    element = _ref.element;
 						return _react2.default.createElement(
-							'div',
+							_react2.default.Fragment,
 							{ key: id },
 							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {
@@ -606,7 +606,7 @@ var SignupForm = function (_React$Component) {
 						}).join(' ');
 
 						return _react2.default.createElement(
-							'div',
+							_react2.default.Fragment,
 							{ key: id },
 							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {
