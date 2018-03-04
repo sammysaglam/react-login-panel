@@ -1,5 +1,14 @@
-var ReactLoginPanel =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("react"), require("prop-types"));
+	else if(typeof define === 'function' && define.amd)
+		define("ReactLoginPanel", ["react", "prop-types"], factory);
+	else if(typeof exports === 'object')
+		exports["ReactLoginPanel"] = factory(require("react"), require("prop-types"));
+	else
+		root["ReactLoginPanel"] = factory(root["React"], root["PropTypes"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_prop_types__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -45,6 +54,11 @@ var ReactLoginPanel =
 /******/ 		}
 /******/ 	};
 /******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -60,221 +74,292 @@ var ReactLoginPanel =
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports) {
+/******/ ({
 
-module.exports = React;
-
-/***/ }),
-/* 1 */
+/***/ "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
-__webpack_require__(3);
-module.exports = __webpack_require__(4);
+"use strict";
+function _interopDefault(e){return e&&"object"==typeof e&&"default"in e?e.default:e}Object.defineProperty(exports,"__esModule",{value:!0});var React=_interopDefault(__webpack_require__(/*! react */ "react")),classCallCheck=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},inherits=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)},possibleConstructorReturn=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t},AppContainer=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,e.apply(this,arguments))}return inherits(t,e),t.prototype.render=function(){return React.Children.only(this.props.children)},t}(React.Component),hot_prod=function(){return function(e){return e}},areComponentsEqual=function(e,t){return e===t},setConfig=function(){};exports.AppContainer=AppContainer,exports.hot=hot_prod,exports.areComponentsEqual=areComponentsEqual,exports.setConfig=setConfig;
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 4 */
+/***/ "./node_modules/react-hot-loader/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/react-hot-loader/index.js ***!
+  \************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+if (true) {
+  module.exports = __webpack_require__(/*! ./dist/react-hot-loader.production.min.js */ "./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js");
+} else {}
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+/***/ }),
 
-var _react2 = _interopRequireDefault(_react);
+/***/ "./node_modules/webpack/buildin/harmony-module.js":
+/*!*******************************************!*\
+  !*** (webpack)/buildin/harmony-module.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-var _propTypes = __webpack_require__(5);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _LoginForm = __webpack_require__(6);
-
-var _LoginForm2 = _interopRequireDefault(_LoginForm);
-
-var _SignupForm = __webpack_require__(7);
-
-var _SignupForm2 = _interopRequireDefault(_SignupForm);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var LangDefaults = {
-	'login': 'Login',
-	'signup': 'Signup',
-	'signout': 'Sign Out',
-	'loggingIn': 'Logging In'
+module.exports = function(originalModule) {
+	if (!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
 };
 
-var ReactLoginPanel = function (_React$Component) {
-	_inherits(ReactLoginPanel, _React$Component);
 
-	function ReactLoginPanel(props) {
-		_classCallCheck(this, ReactLoginPanel);
+/***/ }),
 
-		var _this = _possibleConstructorReturn(this, (ReactLoginPanel.__proto__ || Object.getPrototypeOf(ReactLoginPanel)).call(this, props));
+/***/ "./src/ReactLoginPanel.js":
+/*!********************************!*\
+  !*** ./src/ReactLoginPanel.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-		_this.lang = _extends({}, LangDefaults, props.lang);
-		return _this;
-	}
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/LoginForm/LoginForm */ "./src/components/LoginForm/LoginForm.js");
+/* harmony import */ var _components_SignupForm_SignupForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/SignupForm/SignupForm */ "./src/components/SignupForm/SignupForm.js");
+(function () {
+	var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
 
-	_createClass(ReactLoginPanel, [{
-		key: 'render',
-		value: function render() {
-			var _props = this.props,
-			    _props$showFormTitles = _props.showFormTitles,
-			    showFormTitles = _props$showFormTitles === undefined ? true : _props$showFormTitles,
-			    loggedInUser = _props.loggedInUser,
-			    userLoggedInMessage = _props.userLoggedInMessage,
-			    signout = _props.signout,
-			    showLoginForm = _props.showLoginForm,
-			    toggleLoginForm = _props.toggleLoginForm,
-			    loginFormFields = _props.loginFormFields,
-			    submitLoginForm = _props.submitLoginForm,
-			    loggingIn = _props.loggingIn,
-			    loginFailed = _props.loginFailed,
-			    loginFailedMessage = _props.loginFailedMessage,
-			    showSignupForm = _props.showSignupForm,
-			    toggleSignupForm = _props.toggleSignupForm,
-			    signupFormFields = _props.signupFormFields,
-			    submitSignupForm = _props.submitSignupForm;
+	enterModule && enterModule(module);
+})();
 
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'react-login-panel' },
-				loginFormFields && signupFormFields && _react2.default.createElement(
+
+
+
+
+var runOrPrint = function runOrPrint(value) {
+	return typeof value === 'function' ? value() : value;
+};
+
+var ReactLoginPanel = function ReactLoginPanel(_ref) {
+	var isLoginFormVisible = _ref.isLoginFormVisible,
+	    isSignupFormVisible = _ref.isSignupFormVisible,
+	    areFormTitlesVisible = _ref.areFormTitlesVisible,
+	    loggedInUser = _ref.loggedInUser,
+	    userLoggedInMessage = _ref.userLoggedInMessage,
+	    signout = _ref.signout,
+	    toggleLoginForm = _ref.toggleLoginForm,
+	    loginFormFields = _ref.loginFormFields,
+	    onSubmitLoginForm = _ref.onSubmitLoginForm,
+	    loggingIn = _ref.loggingIn,
+	    loginFailed = _ref.loginFailed,
+	    toggleSignupForm = _ref.toggleSignupForm,
+	    signupFormFields = _ref.signupFormFields,
+	    signingUp = _ref.signingUp,
+	    onSubmitSignupForm = _ref.onSubmitSignupForm,
+	    lang = _ref.lang;
+	return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+		'div',
+		{ className: 'react-login-panel' },
+		loginFormFields && signupFormFields && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+			'div',
+			{ className: 'react-login-panel__nav' },
+			loggedInUser ? typeof userLoggedInMessage === 'function' ? userLoggedInMessage(loggedInUser) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+				react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
+				null,
+				userLoggedInMessage,
+				react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 					'div',
-					{ className: 'nav' },
-					loggedInUser ? [typeof userLoggedInMessage === 'function' ? userLoggedInMessage(loggedInUser) : userLoggedInMessage, _react2.default.createElement(
-						'div',
-						{ key: 'signout', className: 'button', onClick: signout },
-						this.lang.signout
-					)] : [_react2.default.createElement(
-						'div',
-						{ key: 'login', className: 'button' + (showLoginForm ? ' active' : ''), onClick: toggleLoginForm },
-						this.lang.login
-					), _react2.default.createElement(
-						'div',
-						{ key: 'signup', className: 'button' + (showSignupForm ? ' active' : ''), onClick: toggleSignupForm },
-						this.lang.signup
-					)]
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'forms' },
-					loginFormFields && _react2.default.createElement(_LoginForm2.default, {
-						showFormTitles: showFormTitles,
-						lang: this.lang,
-						showLoginForm: showLoginForm && !loggedInUser,
-						loggingIn: loggingIn,
-						formFields: loginFormFields,
-						submitForm: submitLoginForm,
-						loginFailed: loginFailed,
-						loginFailedMessage: loginFailedMessage
-					}),
-					signupFormFields && _react2.default.createElement(_SignupForm2.default, {
-						showFormTitles: showFormTitles,
-						lang: this.lang,
-						showSignupForm: showSignupForm && !loggedInUser,
-						formFields: signupFormFields,
-						submitForm: submitSignupForm
-					})
+					{ className: 'react-login-panel__button', onClick: signout },
+					runOrPrint(lang.signout)
 				)
-			);
-		}
-	}]);
-
-	return ReactLoginPanel;
-}(_react2.default.Component);
+			) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+				react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
+				null,
+				react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+					'div',
+					{ className: 'react-login-panel__button' + (isLoginFormVisible ? ' active' : ''), onClick: toggleLoginForm },
+					runOrPrint(lang.login)
+				),
+				react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+					'div',
+					{ className: 'react-login-panel__button' + (isSignupFormVisible ? ' active' : ''), onClick: toggleSignupForm },
+					runOrPrint(lang.signup)
+				)
+			)
+		),
+		react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+			'div',
+			{ className: 'react-login-panel__forms' },
+			loginFormFields && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
+				areFormTitlesVisible: areFormTitlesVisible,
+				formFields: loginFormFields,
+				isLoginFormVisible: isLoginFormVisible && !loggedInUser,
+				lang: lang,
+				loggingIn: loggingIn,
+				loginFailed: loginFailed,
+				onSubmitForm: onSubmitLoginForm
+			}),
+			signupFormFields && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_SignupForm_SignupForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
+				areFormTitlesVisible: areFormTitlesVisible,
+				formFields: signupFormFields,
+				isSignupFormVisible: isSignupFormVisible && !loggedInUser,
+				lang: lang,
+				onSubmitForm: onSubmitSignupForm,
+				signingUp: signingUp
+			})
+		)
+	);
+};
 
 ReactLoginPanel.propTypes = {
-	showFormTitles: _propTypes2.default.bool,
-	lang: _propTypes2.default.shape({
-		'login': _propTypes2.default.string,
-		'signup': _propTypes2.default.string,
-		'signout': _propTypes2.default.string,
-		'loggingIn': _propTypes2.default.string
+	areFormTitlesVisible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+	isLoginFormVisible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
+	isSignupFormVisible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
+	lang: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+		login: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node]),
+		signup: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node]),
+		signout: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node]),
+		loggingIn: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node]),
+		loginFailedMessage: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node])
 	}),
-	loggedInUser: _propTypes2.default.oneOfType([_propTypes2.default.object]),
-	userLoggedInMessage: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.object, _propTypes2.default.string]),
-	signout: _propTypes2.default.func,
-	showLoginForm: _propTypes2.default.bool,
-	toggleLoginForm: _propTypes2.default.func,
-	loginFormFields: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-		id: _propTypes2.default.string.isRequired,
-		element: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.func]).isRequired
+	loggedInUser: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object, // eslint-disable-line react/forbid-prop-types
+	loggingIn: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+	loginFailed: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+	loginFormFields: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+		id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+		element: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func]).isRequired
 	})),
-	submitLoginForm: _propTypes2.default.func,
-	loggingIn: _propTypes2.default.bool,
-	loginFailed: _propTypes2.default.bool,
-	loginFailedMessage: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.object, _propTypes2.default.string]),
-	showSignupForm: _propTypes2.default.bool,
-	toggleSignupForm: _propTypes2.default.func,
-	signupFormFields: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-		id: _propTypes2.default.string.isRequired,
-		element: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.func]).isRequired,
-		validator: _propTypes2.default.func.isRequired,
-		errorFeedbackElement: _propTypes2.default.func.isRequired
+	onSubmitLoginForm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+	onSubmitSignupForm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+	signingUp: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+	signout: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+	signupFormFields: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+		id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+		element: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func]).isRequired,
+		validator: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
+		errorFeedbackElement: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
 	})),
-	submitSignupForm: _propTypes2.default.func
+	toggleLoginForm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+	toggleSignupForm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
+	userLoggedInMessage: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node])
 };
 
-module.exports = ReactLoginPanel;
+ReactLoginPanel.defaultProps = {
+	areFormTitlesVisible: true,
+	lang: {
+		login: 'Login',
+		signup: 'Signup',
+		signout: 'Sign Out',
+		loggingIn: 'Logging In',
+		loginFailedMessage: 'Login failed'
+	},
+	loggedInUser: null,
+	loggingIn: null,
+	loginFailed: null,
+	loginFormFields: null,
+	onSubmitLoginForm: null,
+	onSubmitSignupForm: null,
+	signingUp: null,
+	signout: null,
+	signupFormFields: null,
+	toggleLoginForm: null,
+	toggleSignupForm: null,
+	userLoggedInMessage: null
+};
+
+var _default = ReactLoginPanel;
+/* harmony default export */ __webpack_exports__["default"] = (_default);
+;
+
+(function () {
+	var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+	var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+	if (!reactHotLoader) {
+		return;
+	}
+
+	reactHotLoader.register(runOrPrint, 'runOrPrint', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/ReactLoginPanel.js');
+	reactHotLoader.register(ReactLoginPanel, 'ReactLoginPanel', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/ReactLoginPanel.js');
+	reactHotLoader.register(_default, 'default', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/ReactLoginPanel.js');
+	leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
-/* 5 */
+
+/***/ "./src/ReactLoginPanel.scss":
+/*!**********************************!*\
+  !*** ./src/ReactLoginPanel.scss ***!
+  \**********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = PropTypes;
+// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+
+/***/ "./src/components/LoginForm/LoginForm.js":
+/*!***********************************************!*\
+  !*** ./src/components/LoginForm/LoginForm.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+(function () {
+	var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	enterModule && enterModule(module);
+})();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -283,6 +368,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var runOrPrint = function runOrPrint(value) {
+	return typeof value === 'function' ? value() : value;
+};
 
 var LoginForm = function (_React$Component) {
 	_inherits(LoginForm, _React$Component);
@@ -293,7 +385,7 @@ var LoginForm = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (LoginForm.__proto__ || Object.getPrototypeOf(LoginForm)).call(this, props));
 
 		_this.state = {
-			customFields: {}
+			fieldValues: {}
 		};
 
 		_this.onFieldChange = _this.onFieldChange.bind(_this);
@@ -304,10 +396,12 @@ var LoginForm = function (_React$Component) {
 	_createClass(LoginForm, [{
 		key: 'onFieldChange',
 		value: function onFieldChange(fieldId, newVal) {
+			var fieldValues = this.state.fieldValues;
 
 			// save field's new value to state
+
 			this.setState({
-				customFields: _extends({}, this.state.customFields, _defineProperty({}, fieldId, newVal))
+				fieldValues: _extends({}, fieldValues, _defineProperty({}, fieldId, newVal))
 			});
 		}
 	}, {
@@ -315,102 +409,145 @@ var LoginForm = function (_React$Component) {
 		value: function onSubmit(event) {
 			event.preventDefault();
 
-			this.props.submitForm(this.state.customFields);
+			var onSubmitForm = this.props.onSubmitForm;
+			var fieldValues = this.state.fieldValues;
+
+
+			onSubmitForm(fieldValues);
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var _props = this.props,
-			    showFormTitles = _props.showFormTitles,
+			    areFormTitlesVisible = _props.areFormTitlesVisible,
 			    lang = _props.lang,
 			    formFields = _props.formFields,
-			    showLoginForm = _props.showLoginForm,
+			    isLoginFormVisible = _props.isLoginFormVisible,
 			    loggingIn = _props.loggingIn,
-			    loginFailed = _props.loginFailed,
-			    loginFailedMessage = _props.loginFailedMessage;
+			    loginFailed = _props.loginFailed;
 			var onSubmit = this.onSubmit,
 			    onFieldChange = this.onFieldChange;
 
 
-			var classNames = ['login-form', showLoginForm ? 'show' : null, loggingIn ? 'logging-in' : null, loginFailed ? 'login-failed' : null].filter(function (className) {
+			var classNames = ['react-login-panel__form', 'react-login-panel__form--login', isLoginFormVisible ? 'react-login-panel__form--show' : null, loggingIn ? 'react-login-panel__form--logging-in' : null, loginFailed ? 'react-login-panel__form--login-failed' : null].filter(function (className) {
 				return className;
 			}).join(' ');
 
-			return _react2.default.createElement(
+			return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 				'div',
 				{ className: classNames },
-				showFormTitles && _react2.default.createElement(
+				areFormTitlesVisible && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 					'h2',
 					null,
-					lang.login
+					runOrPrint(lang.login)
 				),
-				loginFailed && loginFailedMessage ? typeof loginFailedMessage === 'function' ? loginFailedMessage() : loginFailedMessage : null,
-				_react2.default.createElement(
+				loginFailed ? runOrPrint(lang.loginFailedMessage) : null,
+				react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 					'form',
 					{ onSubmit: onSubmit },
 					formFields.map(function (_ref) {
 						var id = _ref.id,
 						    element = _ref.element;
-						return _react2.default.createElement(
-							_react2.default.Fragment,
+						return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+							react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
 							{ key: id },
 							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {
 									onFieldChange(id, newVal);
 								},
 								disabled: loggingIn
-							}) : _react2.default.cloneElement(element, {
+							}) : react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(element, {
 								onChange: function onChange(event) {
 									onFieldChange(id, event.target.value);
 									if (typeof element.props.onChange === 'function') {
-										field.element.props.onChange(event);
+										element.props.onChange(event);
 									}
 								},
 								disabled: loggingIn
 							})
 						);
 					}),
-					_react2.default.createElement('input', {
-						type: 'submit',
-						value: loggingIn ? lang.loggingIn : lang.login,
-						disabled: loggingIn
-					})
+					react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { disabled: loggingIn, type: 'submit', value: loggingIn ? runOrPrint(lang.loggingIn) : runOrPrint(lang.login) })
 				)
 			);
+		}
+	}, {
+		key: '__reactstandin__regenerateByEval',
+		value: function __reactstandin__regenerateByEval(key, code) {
+			this[key] = eval(code);
 		}
 	}]);
 
 	return LoginForm;
-}(_react2.default.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-exports.default = LoginForm;
+var _default = LoginForm;
+/* harmony default export */ __webpack_exports__["default"] = (_default);
+
+
+LoginForm.propTypes = {
+	areFormTitlesVisible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+	formFields: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+		id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+		element: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func]).isRequired
+	})).isRequired,
+	isLoginFormVisible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
+	lang: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+		loggingIn: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+		login: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+	}).isRequired,
+	loggingIn: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
+	loginFailed: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
+	onSubmitForm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+};
+
+LoginForm.defaultProps = {
+	areFormTitlesVisible: true
+};
+;
+
+(function () {
+	var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
+
+	var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
+
+	if (!reactHotLoader) {
+		return;
+	}
+
+	reactHotLoader.register(runOrPrint, 'runOrPrint', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/components/LoginForm/LoginForm.js');
+	reactHotLoader.register(LoginForm, 'LoginForm', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/components/LoginForm/LoginForm.js');
+	reactHotLoader.register(_default, 'default', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/components/LoginForm/LoginForm.js');
+	leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+
+/***/ "./src/components/SignupForm/SignupForm.js":
+/*!*************************************************!*\
+  !*** ./src/components/SignupForm/SignupForm.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+(function () {
+	var enterModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").enterModule;
 
-var _react2 = _interopRequireDefault(_react);
-
-var _object = __webpack_require__(8);
-
-var _object2 = _interopRequireDefault(_object);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	enterModule && enterModule(module);
+})();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -419,6 +556,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var runOrPrint = function runOrPrint(value) {
+	return typeof value === 'function' ? value() : value;
+};
 
 var SignupForm = function (_React$Component) {
 	_inherits(SignupForm, _React$Component);
@@ -429,12 +573,13 @@ var SignupForm = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (SignupForm.__proto__ || Object.getPrototypeOf(SignupForm)).call(this, props));
 
 		_this.state = {
-			customFields: {}
+			validating: false,
+			fieldValues: {}
 		};
 
 		_this.onFieldChange = _this.onFieldChange.bind(_this);
+		_this.validateField = _this.validateField.bind(_this);
 		_this.validateAllFieldsAndSubmit = _this.validateAllFieldsAndSubmit.bind(_this);
-		_this.onSubmit = _this.onSubmit.bind(_this);
 		return _this;
 	}
 
@@ -443,552 +588,329 @@ var SignupForm = function (_React$Component) {
 		value: function onFieldChange(fieldId, newVal, validator) {
 			var _this2 = this;
 
-			// save field's new value to state
+			var fieldValues = this.state.fieldValues;
+
+			// save new value to state and mark isValid as pending
+
 			var newState = {
-				customFields: _extends({}, this.state.customFields, _defineProperty({}, fieldId, _extends({}, this.state.customFields[fieldId], {
-					value: newVal
+				fieldValues: _extends({}, fieldValues, _defineProperty({}, fieldId, _extends({}, fieldValues[fieldId], {
+					value: newVal,
+					isValid: 'pending'
 				})))
 			};
-
-			// create callback if validator is async
-			var asyncCallback = function asyncCallback(jsonResponse) {
-
-				var currentValue = _this2.state.customFields[fieldId] && _this2.state.customFields[fieldId].value ? _this2.state.customFields[fieldId].value : '';
-
-				if (jsonResponse.value === currentValue) {
-					_this2.setState({
-						customFields: _extends({}, _this2.state.customFields, _defineProperty({}, fieldId, _extends({}, _this2.state.customFields[fieldId], {
-							isValid: jsonResponse.isValid
-						})))
-					});
-				}
-			};
-
-			// run user-defined validation function
-			var validationResult = validator(newVal, asyncCallback);
-
-			// check if validator is async
-			if ((typeof validationResult === 'undefined' ? 'undefined' : _typeof(validationResult)) === 'object') {
-
-				// set new validity state to 'pending'
-				newState.customFields[fieldId].isValid = 'pending';
-			} else {
-
-				// no async, so we can safely update the state immediately
-				newState.customFields[fieldId].isValid = validationResult;
-			}
-
 			this.setState(newState);
+
+			// validate field value
+			this.validateField({
+				fieldId: fieldId,
+				value: newVal,
+				validator: validator,
+				done: function done(response) {
+					_this2.setState(_extends({}, newState, {
+						fieldValues: _extends({}, newState.fieldValues, _defineProperty({}, fieldId, _extends({}, newState.fieldValues[fieldId], {
+							isValid: response
+						})))
+					}));
+				}
+			});
 		}
 	}, {
-		key: 'validateAllFieldsAndSubmit',
-		value: function validateAllFieldsAndSubmit(submitFn) {
+		key: 'validateField',
+		value: function validateField(_ref) {
 			var _this3 = this;
 
-			var formFields = this.props.formFields;
+			var fieldId = _ref.fieldId,
+			    value = _ref.value,
+			    validator = _ref.validator,
+			    done = _ref.done;
 
-			var booleanValidators = true;
-			var asyncValidators = {};
-			var newState = {
-				customFields: _extends({}, this.state.customFields)
-			};
+			var generateValidationId = function generateValidationId(_ref2) {
+				var field = _ref2.fieldId;
 
-			// a function to check if ready to submit
-			var passedValidation = function passedValidation() {
-				return booleanValidators && function () {
+				if (!_this3.mostRecentValidationId) {
+					_this3.mostRecentValidationId = {};
+				}
 
-					return !(0, _object2.default)(asyncValidators, function (failuresExist, state) {
-						return failuresExist || state.passed !== true;
-					}, false);
-				}();
-			};
-
-			formFields.forEach(function (field) {
-
-				// get current user input
-				var fieldValue = _this3.state.customFields[field.id] && _this3.state.customFields[field.id].value ? _this3.state.customFields[field.id].value : '';
-
-				// run validation function
-				var validationResult = field.validator(fieldValue);
-
-				// check if validationResult is a promise
-				if (validationResult.then) {
-
-					// add async validator to list
-					asyncValidators = _extends({}, asyncValidators, _defineProperty({}, field.id, {
-						value: fieldValue
-					}));
-
-					// save response to list when ready
-					validationResult.then(function (response) {
-						return response.json();
-					}).then(function (response) {
-
-						// update state to display errors to user
-						var newStateAsync = {
-							customFields: _extends({}, _this3.state.customFields, _defineProperty({}, field.id, _extends({}, _this3.state.customFields[field.id], {
-								isValid: response.isValid
-							})))
-						};
-						_this3.setState(newStateAsync);
-
-						// store validity response
-						asyncValidators = _extends({}, asyncValidators, _defineProperty({}, field.id, {
-							passed: response.value === fieldValue && response.isValid === true
-						}));
-
-						// if ready, then submit
-						if (passedValidation()) {
-							submitFn();
-						}
-					});
+				// increment the validation id tracker
+				if (_this3.mostRecentValidationId[field]) {
+					_this3.mostRecentValidationId[field]++;
 				} else {
-					booleanValidators = booleanValidators && validationResult === true;
+					_this3.mostRecentValidationId[field] = 1;
+				}
 
-					// update state to display errors to user
-					newState = {
-						customFields: _extends({}, newState.customFields, _defineProperty({}, field.id, {
-							value: fieldValue,
-							isValid: validationResult
-						}))
-					};
+				return _this3.mostRecentValidationId[field];
+			};
+
+			var hasValidationExpired = function hasValidationExpired(_ref3) {
+				var field = _ref3.fieldId,
+				    validationId = _ref3.validationId;
+				return validationId !== _this3.mostRecentValidationId[field];
+			};
+
+			var validationId = generateValidationId({ fieldId: fieldId });
+
+			// run user-defined validation function
+			var validationResult = validator(value, function (response) {
+				if (!hasValidationExpired({
+					fieldId: fieldId,
+					validationId: validationId
+				})) {
+					done(response);
 				}
 			});
 
-			// save new state
-			this.setState(newState);
-
-			// if ready, then submit
-			if (passedValidation()) {
-				submitFn();
+			// if not async, return validation result to done callback
+			if (!validationResult.then) {
+				if (!hasValidationExpired({
+					fieldId: fieldId,
+					validationId: validationId
+				})) {
+					done(validationResult);
+				}
 			}
 		}
 	}, {
-		key: 'onSubmit',
-		value: function onSubmit(event) {
+		key: 'validateAllFieldsAndSubmit',
+		value: function validateAllFieldsAndSubmit() {
 			var _this4 = this;
 
-			event.preventDefault();
+			var _props = this.props,
+			    formFields = _props.formFields,
+			    onSubmitForm = _props.onSubmitForm;
+			var fieldValues = this.state.fieldValues;
 
-			this.validateAllFieldsAndSubmit(function () {
-				_this4.props.submitForm(_this4.state.customFields);
+
+			var numberOfFields = formFields.length;
+			var validFieldsCount = 0;
+			var parsedFieldsCount = 0;
+			var newState = {
+				validating: true,
+				fieldValues: fieldValues
+			};
+			this.setState(newState);
+
+			formFields.forEach(function (_ref4) {
+				var fieldId = _ref4.id,
+				    validator = _ref4.validator;
+
+				var fieldValue = fieldValues[fieldId] && fieldValues[fieldId].value ? fieldValues[fieldId].value : '';
+
+				// validate field value
+				_this4.validateField({
+					fieldId: fieldId,
+					value: fieldValue,
+					validator: validator,
+					done: function done(response) {
+						newState = _extends({}, newState, {
+							fieldValues: _extends({}, newState.fieldValues, _defineProperty({}, fieldId, _extends({}, newState.fieldValues[fieldId], {
+								isValid: response
+							})))
+						});
+
+						// response is valid
+						if (response === true) {
+							validFieldsCount++;
+						}
+
+						// increment parsed fields
+						parsedFieldsCount++;
+
+						// check if finished
+						var validationFinished = parsedFieldsCount === numberOfFields;
+
+						if (validationFinished) {
+							_this4.setState(_extends({}, newState, {
+								validating: false
+							}));
+
+							var allAreValid = validFieldsCount === parsedFieldsCount;
+							if (allAreValid) {
+								onSubmitForm(newState.fieldValues);
+							}
+						}
+					}
+				});
 			});
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var _props = this.props,
-			    showFormTitles = _props.showFormTitles,
-			    lang = _props.lang,
-			    formFields = _props.formFields,
-			    showSignupForm = _props.showSignupForm;
-			var customFields = this.state.customFields;
-			var onSubmit = this.onSubmit,
-			    onFieldChange = this.onFieldChange;
+			var _this5 = this;
+
+			var _props2 = this.props,
+			    areFormTitlesVisible = _props2.areFormTitlesVisible,
+			    lang = _props2.lang,
+			    formFields = _props2.formFields,
+			    isSignupFormVisible = _props2.isSignupFormVisible,
+			    signingUp = _props2.signingUp;
+			var _state = this.state,
+			    validating = _state.validating,
+			    fieldValues = _state.fieldValues;
+			var onFieldChange = this.onFieldChange;
 
 
-			var classNames = ['signup-form', showSignupForm ? 'show' : null].filter(function (className) {
-				return className;
+			var classNames = ['react-login-panel__form', 'react-login-panel__form--signup', isSignupFormVisible ? 'react-login-panel__form--show' : null].filter(function (isNotEmpty) {
+				return isNotEmpty;
 			}).join(' ');
 
-			return _react2.default.createElement(
+			return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 				'div',
 				{ className: classNames },
-				showFormTitles && _react2.default.createElement(
+				areFormTitlesVisible && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 					'h2',
 					null,
-					lang.signup
+					runOrPrint(lang.signup)
 				),
-				_react2.default.createElement(
+				react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 					'form',
-					{ onSubmit: onSubmit },
-					formFields.map(function (_ref) {
-						var id = _ref.id,
-						    element = _ref.element,
-						    validator = _ref.validator,
-						    errorFeedbackElement = _ref.errorFeedbackElement;
+					{
+						onSubmit: function onSubmit(event) {
+							event.preventDefault();
+							_this5.validateAllFieldsAndSubmit();
+						}
+					},
+					formFields.map(function (_ref5) {
+						var fieldId = _ref5.id,
+						    element = _ref5.element,
+						    validator = _ref5.validator,
+						    errorFeedbackElement = _ref5.errorFeedbackElement;
 
+						var validityPending = fieldValues[fieldId] && fieldValues[fieldId].isValid === 'pending';
+						var hasErrors = !validityPending && fieldValues[fieldId] && fieldValues[fieldId].isValid !== true;
+						var errorCode = hasErrors && fieldValues[fieldId].isValid;
 
-						var validityPending = customFields[id] && customFields[id].isValid === 'pending';
-						var hasErrors = !validityPending && customFields[id] && customFields[id].isValid !== true;
-						var errorCode = hasErrors && customFields[id].isValid;
-
-						var fieldClassNames = [validityPending ? 'pending' : null, hasErrors ? 'error' : null].filter(function (className) {
+						var fieldClassNames = ['react-login-panel__input', validityPending ? 'react-login-panel__input--pending' : null, hasErrors ? 'react-login-panel__input--error' : null].filter(function (className) {
 							return className;
 						}).join(' ');
 
-						return _react2.default.createElement(
-							_react2.default.Fragment,
-							{ key: id },
+						return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+							react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
+							{ key: fieldId },
 							typeof element === 'function' ? element({
 								onChange: function onChange(newVal) {
-									onFieldChange(id, newVal, validator);
-								}
-							}) : _react2.default.cloneElement(element, {
+									onFieldChange(fieldId, newVal, validator);
+								},
+								pendingValidation: validityPending,
+								disabled: validating || signingUp
+							}) : react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(element, {
 								className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
 								onChange: function onChange(event) {
-									onFieldChange(id, event.target.value, validator);
+									onFieldChange(fieldId, event.target.value, validator);
 									if (typeof element.props.onChange === 'function') {
 										element.props.onChange(event);
 									}
-								}
+								},
+								disabled: validating || signingUp
 							}),
 							hasErrors ? errorFeedbackElement(errorCode) : null
 						);
 					}),
-					_react2.default.createElement('input', { type: 'submit', value: lang.signup })
+					react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { type: 'submit', value: runOrPrint(lang.signup) })
 				)
 			);
+		}
+	}, {
+		key: '__reactstandin__regenerateByEval',
+		value: function __reactstandin__regenerateByEval(key, code) {
+			this[key] = eval(code);
 		}
 	}]);
 
 	return SignupForm;
-}(_react2.default.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-exports.default = SignupForm;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * object.reduce <https://github.com/jonschlinkert/object.reduce>
- *
- * Copyright (c) 2014-2015, 2017, Jon Schlinkert.
- * Released under the MIT License.
- */
+var _default = SignupForm;
+/* harmony default export */ __webpack_exports__["default"] = (_default);
 
 
-
-var makeIterator = __webpack_require__(9);
-var forOwn = __webpack_require__(12);
-
-module.exports = function reduce(target, fn, acc, thisArg) {
-  var first = arguments.length > 2;
-  if (target && !Object.keys(target).length && !first) {
-    return null;
-  }
-
-  var iterator = makeIterator(fn, thisArg);
-
-  forOwn(target, function(value, key, orig) {
-    if (!first) {
-      acc = value;
-      first = true;
-    } else {
-      acc = iterator(acc, value, key, orig);
-    }
-  });
-
-  return acc;
+SignupForm.propTypes = {
+	areFormTitlesVisible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+	formFields: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+		id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+		element: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func]).isRequired,
+		validator: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
+		errorFeedbackElement: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+	})).isRequired,
+	isSignupFormVisible: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired,
+	lang: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+		signup: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+	}).isRequired,
+	onSubmitForm: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
+	signingUp: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired
 };
 
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * make-iterator <https://github.com/jonschlinkert/make-iterator>
- *
- * Copyright (c) 2014, 2017, Jon Schlinkert.
- * Released under the MIT License.
- */
-
-
-
-var typeOf = __webpack_require__(10);
-
-module.exports = function makeIterator(target, thisArg) {
-  switch (typeOf(target)) {
-    case 'undefined':
-    case 'null':
-      return noop;
-    case 'function':
-      // function is the first to improve perf (most common case)
-      // also avoid using `Function#call` if not needed, which boosts
-      // perf a lot in some cases
-      return (typeof thisArg !== 'undefined') ? function(val, i, arr) {
-        return target.call(thisArg, val, i, arr);
-      } : target;
-    case 'object':
-      return function(val) {
-        return deepMatches(val, target);
-      };
-    case 'regexp':
-      return function(str) {
-        return target.test(str);
-      };
-    case 'string':
-    case 'number':
-    default: {
-      return prop(target);
-    }
-  }
+SignupForm.defaultProps = {
+	areFormTitlesVisible: true
 };
+;
 
-function containsMatch(array, value) {
-  var len = array.length;
-  var i = -1;
+(function () {
+	var reactHotLoader = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").default;
 
-  while (++i < len) {
-    if (deepMatches(array[i], value)) {
-      return true;
-    }
-  }
-  return false;
-}
+	var leaveModule = __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js").leaveModule;
 
-function matchArray(arr, value) {
-  var len = value.length;
-  var i = -1;
+	if (!reactHotLoader) {
+		return;
+	}
 
-  while (++i < len) {
-    if (!containsMatch(arr, value[i])) {
-      return false;
-    }
-  }
-  return true;
-}
+	reactHotLoader.register(runOrPrint, 'runOrPrint', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/components/SignupForm/SignupForm.js');
+	reactHotLoader.register(SignupForm, 'SignupForm', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/components/SignupForm/SignupForm.js');
+	reactHotLoader.register(_default, 'default', '/home/sammysaglam/work/axe-framework/modules/Auth/views/_react-login-panel-package/src/components/SignupForm/SignupForm.js');
+	leaveModule(module);
+})();
 
-function matchObject(obj, value) {
-  for (var key in value) {
-    if (value.hasOwnProperty(key)) {
-      if (deepMatches(obj[key], value[key]) === false) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-/**
- * Recursively compare objects
- */
-
-function deepMatches(val, value) {
-  if (typeOf(val) === 'object') {
-    if (Array.isArray(val) && Array.isArray(value)) {
-      return matchArray(val, value);
-    } else {
-      return matchObject(val, value);
-    }
-  } else {
-    return val === value;
-  }
-}
-
-function prop(name) {
-  return function(obj) {
-    return obj[name];
-  };
-}
-
-function noop(val) {
-  return val;
-}
-
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
 
-var isBuffer = __webpack_require__(11);
-var toString = Object.prototype.toString;
-
-/**
- * Get the native `typeof` a value.
- *
- * @param  {*} `val`
- * @return {*} Native javascript type
- */
-
-module.exports = function kindOf(val) {
-  // primitivies
-  if (typeof val === 'undefined') {
-    return 'undefined';
-  }
-  if (val === null) {
-    return 'null';
-  }
-  if (val === true || val === false || val instanceof Boolean) {
-    return 'boolean';
-  }
-  if (typeof val === 'string' || val instanceof String) {
-    return 'string';
-  }
-  if (typeof val === 'number' || val instanceof Number) {
-    return 'number';
-  }
-
-  // functions
-  if (typeof val === 'function' || val instanceof Function) {
-    return 'function';
-  }
-
-  // array
-  if (typeof Array.isArray !== 'undefined' && Array.isArray(val)) {
-    return 'array';
-  }
-
-  // check for instances of RegExp and Date before calling `toString`
-  if (val instanceof RegExp) {
-    return 'regexp';
-  }
-  if (val instanceof Date) {
-    return 'date';
-  }
-
-  // other objects
-  var type = toString.call(val);
-
-  if (type === '[object RegExp]') {
-    return 'regexp';
-  }
-  if (type === '[object Date]') {
-    return 'date';
-  }
-  if (type === '[object Arguments]') {
-    return 'arguments';
-  }
-  if (type === '[object Error]') {
-    return 'error';
-  }
-
-  // buffer
-  if (isBuffer(val)) {
-    return 'buffer';
-  }
-
-  // es6: Map, WeakMap, Set, WeakSet
-  if (type === '[object Set]') {
-    return 'set';
-  }
-  if (type === '[object WeakSet]') {
-    return 'weakset';
-  }
-  if (type === '[object Map]') {
-    return 'map';
-  }
-  if (type === '[object WeakMap]') {
-    return 'weakmap';
-  }
-  if (type === '[object Symbol]') {
-    return 'symbol';
-  }
-
-  // typed arrays
-  if (type === '[object Int8Array]') {
-    return 'int8array';
-  }
-  if (type === '[object Uint8Array]') {
-    return 'uint8array';
-  }
-  if (type === '[object Uint8ClampedArray]') {
-    return 'uint8clampedarray';
-  }
-  if (type === '[object Int16Array]') {
-    return 'int16array';
-  }
-  if (type === '[object Uint16Array]') {
-    return 'uint16array';
-  }
-  if (type === '[object Int32Array]') {
-    return 'int32array';
-  }
-  if (type === '[object Uint32Array]') {
-    return 'uint32array';
-  }
-  if (type === '[object Float32Array]') {
-    return 'float32array';
-  }
-  if (type === '[object Float64Array]') {
-    return 'float64array';
-  }
-
-  // must be a plain object
-  return 'object';
-};
-
-
-/***/ }),
-/* 11 */
+/***/ "./src/themes/theme-1/theme-1.scss":
+/*!*****************************************!*\
+  !*** ./src/themes/theme-1/theme-1.scss ***!
+  \*****************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
+// removed by extract-text-webpack-plugin
 
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
+/***/ }),
 
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
+/***/ 0:
+/*!************************************************************************************************!*\
+  !*** multi ./src/themes/theme-1/theme-1.scss ./src/ReactLoginPanel.scss ./src/ReactLoginPanel ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
+__webpack_require__(/*! ./src/themes/theme-1/theme-1.scss */"./src/themes/theme-1/theme-1.scss");
+__webpack_require__(/*! ./src/ReactLoginPanel.scss */"./src/ReactLoginPanel.scss");
+module.exports = __webpack_require__(/*! ./src/ReactLoginPanel */"./src/ReactLoginPanel.js");
 
 
 /***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/*!
- * for-own <https://github.com/jonschlinkert/for-own>
- *
- * Copyright (c) 2014-2017, Jon Schlinkert.
- * Released under the MIT License.
- */
+/***/ "prop-types":
+/*!*********************************************************************************************************!*\
+  !*** external {"commonjs":"prop-types","commonjs2":"prop-types","amd":"prop-types","root":"PropTypes"} ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-
-
-var forIn = __webpack_require__(13);
-var hasOwn = Object.prototype.hasOwnProperty;
-
-module.exports = function forOwn(obj, fn, thisArg) {
-  forIn(obj, function(val, key) {
-    if (hasOwn.call(obj, key)) {
-      return fn.call(thisArg, obj[key], key, obj);
-    }
-  });
-};
-
+module.exports = __WEBPACK_EXTERNAL_MODULE_prop_types__;
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/*!
- * for-in <https://github.com/jonschlinkert/for-in>
- *
- * Copyright (c) 2014-2017, Jon Schlinkert.
- * Released under the MIT License.
- */
+/***/ "react":
+/*!**************************************************************************************!*\
+  !*** external {"commonjs":"react","commonjs2":"react","amd":"react","root":"React"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-
-
-module.exports = function forIn(obj, fn, thisArg) {
-  for (var key in obj) {
-    if (fn.call(thisArg, obj[key], key, obj) === false) {
-      break;
-    }
-  }
-};
-
+module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 
 /***/ })
-/******/ ]);
+
+/******/ });
+});
 //# sourceMappingURL=react-login-panel.js.map

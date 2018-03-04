@@ -3,150 +3,137 @@ import PropTypes from 'prop-types';
 import LoginForm from './components/LoginForm/LoginForm';
 import SignupForm from './components/SignupForm/SignupForm';
 
-const LangDefaults = {
-	'login':'Login' ,
-	'signup':'Signup' ,
-	'signout':'Sign Out' ,
-	'loggingIn':'Logging In'
-};
+const runOrPrint = value => (typeof value === 'function' ? value() : value);
 
-class ReactLoginPanel extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.lang = {
-			...LangDefaults ,
-			...props.lang
-		};
-	}
-
-	render() {
-
-		const {
-			showFormTitles = true ,
-			loggedInUser ,
-			userLoggedInMessage ,
-			signout ,
-			showLoginForm ,
-			toggleLoginForm ,
-			loginFormFields ,
-			submitLoginForm ,
-			loggingIn ,
-			loginFailed ,
-			loginFailedMessage ,
-			showSignupForm ,
-			toggleSignupForm ,
-			signupFormFields ,
-			submitSignupForm
-
-		} = this.props;
-
-		return (
-			<div className="react-login-panel">
-				{
-					loginFormFields
-
-					&&
-
-					signupFormFields
-
-					&&
-
-					<div className="nav">
-						{
-							loggedInUser ?
-								[
-									typeof userLoggedInMessage === 'function' ? userLoggedInMessage(loggedInUser) : userLoggedInMessage ,
-									<div key="signout" className="button" onClick={signout}>{this.lang.signout}</div>
-								]
-
-								:
-
-								[
-									<div key="login" className={'button' + (showLoginForm ? ' active' : '')} onClick={toggleLoginForm}>{this.lang.login}</div> ,
-									<div key="signup" className={'button' + (showSignupForm ? ' active' : '')} onClick={toggleSignupForm}>{this.lang.signup}</div>
-								]
-						}
-					</div>
-				}
-				<div className="forms">
-					{
-						loginFormFields && <LoginForm
-							showFormTitles={showFormTitles}
-							lang={this.lang}
-							showLoginForm={showLoginForm && !loggedInUser}
-							loggingIn={loggingIn}
-							formFields={loginFormFields}
-							submitForm={submitLoginForm}
-							loginFailed={loginFailed}
-							loginFailedMessage={loginFailedMessage}
-						/>
-					}
-					{
-						signupFormFields && <SignupForm
-							showFormTitles={showFormTitles}
-							lang={this.lang}
-							showSignupForm={showSignupForm && !loggedInUser}
-							formFields={signupFormFields}
-							submitForm={submitSignupForm}
-						/>
-					}
+const ReactLoginPanel = ({
+	isLoginFormVisible,
+	isSignupFormVisible,
+	areFormTitlesVisible,
+	loggedInUser,
+	userLoggedInMessage,
+	signout,
+	toggleLoginForm,
+	loginFormFields,
+	onSubmitLoginForm,
+	loggingIn,
+	loginFailed,
+	toggleSignupForm,
+	signupFormFields,
+	signingUp,
+	onSubmitSignupForm,
+	lang
+}) => (
+	<div className="react-login-panel">
+		{loginFormFields &&
+			signupFormFields && (
+				<div className="react-login-panel__nav">
+					{loggedInUser ? (
+						typeof userLoggedInMessage === 'function' ? (
+							userLoggedInMessage(loggedInUser)
+						) : (
+							<React.Fragment>
+								{userLoggedInMessage}
+								<div className="react-login-panel__button" onClick={signout}>
+									{runOrPrint(lang.signout)}
+								</div>
+							</React.Fragment>
+						)
+					) : (
+						<React.Fragment>
+							<div className={'react-login-panel__button' + (isLoginFormVisible ? ' active' : '')} onClick={toggleLoginForm}>
+								{runOrPrint(lang.login)}
+							</div>
+							<div className={'react-login-panel__button' + (isSignupFormVisible ? ' active' : '')} onClick={toggleSignupForm}>
+								{runOrPrint(lang.signup)}
+							</div>
+						</React.Fragment>
+					)}
 				</div>
-			</div>
-		);
-	}
-}
+			)}
+		<div className="react-login-panel__forms">
+			{loginFormFields && (
+				<LoginForm
+					areFormTitlesVisible={areFormTitlesVisible}
+					formFields={loginFormFields}
+					isLoginFormVisible={isLoginFormVisible && !loggedInUser}
+					lang={lang}
+					loggingIn={loggingIn}
+					loginFailed={loginFailed}
+					onSubmitForm={onSubmitLoginForm}
+				/>
+			)}
+			{signupFormFields && (
+				<SignupForm
+					areFormTitlesVisible={areFormTitlesVisible}
+					formFields={signupFormFields}
+					isSignupFormVisible={isSignupFormVisible && !loggedInUser}
+					lang={lang}
+					onSubmitForm={onSubmitSignupForm}
+					signingUp={signingUp}
+				/>
+			)}
+		</div>
+	</div>
+);
 
 ReactLoginPanel.propTypes = {
-	showFormTitles:PropTypes.bool ,
-	lang:PropTypes.shape({
-		'login':PropTypes.string ,
-		'signup':PropTypes.string ,
-		'signout':PropTypes.string ,
-		'loggingIn':PropTypes.string
-	}) ,
-	loggedInUser:PropTypes.oneOfType([
-		PropTypes.object
-	]) ,
-	userLoggedInMessage:PropTypes.oneOfType([
-		PropTypes.func ,
-		PropTypes.object ,
-		PropTypes.string
-	]) ,
-	signout:PropTypes.func ,
-	showLoginForm:PropTypes.bool ,
-	toggleLoginForm:PropTypes.func ,
-	loginFormFields:PropTypes.arrayOf(
+	areFormTitlesVisible: PropTypes.bool,
+	isLoginFormVisible: PropTypes.bool.isRequired,
+	isSignupFormVisible: PropTypes.bool.isRequired,
+	lang: PropTypes.shape({
+		login: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+		signup: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+		signout: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+		loggingIn: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+		loginFailedMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.node])
+	}),
+	loggedInUser: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+	loggingIn: PropTypes.bool,
+	loginFailed: PropTypes.bool,
+	loginFormFields: PropTypes.arrayOf(
 		PropTypes.shape({
-			id:PropTypes.string.isRequired ,
-			element:PropTypes.oneOfType([
-				PropTypes.object ,
-				PropTypes.func
-			]).isRequired
+			id: PropTypes.string.isRequired,
+			element: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired
 		})
-	) ,
-	submitLoginForm:PropTypes.func ,
-	loggingIn:PropTypes.bool ,
-	loginFailed:PropTypes.bool ,
-	loginFailedMessage:PropTypes.oneOfType([
-		PropTypes.func ,
-		PropTypes.object ,
-		PropTypes.string
-	]) ,
-	showSignupForm:PropTypes.bool ,
-	toggleSignupForm:PropTypes.func ,
-	signupFormFields:PropTypes.arrayOf(
+	),
+	onSubmitLoginForm: PropTypes.func,
+	onSubmitSignupForm: PropTypes.func,
+	signingUp: PropTypes.bool,
+	signout: PropTypes.func,
+	signupFormFields: PropTypes.arrayOf(
 		PropTypes.shape({
-			id:PropTypes.string.isRequired ,
-			element:PropTypes.oneOfType([
-				PropTypes.object ,
-				PropTypes.func
-			]).isRequired ,
-			validator:PropTypes.func.isRequired ,
-			errorFeedbackElement:PropTypes.func.isRequired
+			id: PropTypes.string.isRequired,
+			element: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+			validator: PropTypes.func.isRequired,
+			errorFeedbackElement: PropTypes.func.isRequired
 		})
-	) ,
-	submitSignupForm:PropTypes.func
+	),
+	toggleLoginForm: PropTypes.func,
+	toggleSignupForm: PropTypes.func,
+	userLoggedInMessage: PropTypes.oneOfType([PropTypes.func, PropTypes.node])
 };
 
-module.exports = ReactLoginPanel;
+ReactLoginPanel.defaultProps = {
+	areFormTitlesVisible: true,
+	lang: {
+		login: 'Login',
+		signup: 'Signup',
+		signout: 'Sign Out',
+		loggingIn: 'Logging In',
+		loginFailedMessage: 'Login failed'
+	},
+	loggedInUser: null,
+	loggingIn: null,
+	loginFailed: null,
+	loginFormFields: null,
+	onSubmitLoginForm: null,
+	onSubmitSignupForm: null,
+	signingUp: null,
+	signout: null,
+	signupFormFields: null,
+	toggleLoginForm: null,
+	toggleSignupForm: null,
+	userLoggedInMessage: null
+};
+
+export default ReactLoginPanel;

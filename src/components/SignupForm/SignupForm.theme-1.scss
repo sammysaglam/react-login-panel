@@ -1,9 +1,3 @@
-.signup-form {
-	@extend .forms-animation;
-
+.react-login-panel__form--signup {
 	width:220px;
-
-	.pending {
-		outline: solid 2px #f60;
-	}
 }

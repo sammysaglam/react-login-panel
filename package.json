@@ -1,53 +1,74 @@
 {
 	"name": "react-login-panel",
-	"version": "0.1.26",
+	"version": "0.2.0",
 	"main": "index.js",
-	"repository": "git@github.com:sammysaglam/react-login-panel.git",
+	"homepage": "https://github.com/sammysaglam/react-login-panel",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sammysaglam/react-login-panel"
+	},
 	"author": "Sammy Saglam <sami@saglam.tk>",
 	"license": "MIT",
 	"scripts": {
-		"build-watch": "webpack --progress --watch",
-		"build-dev": "webpack --progress",
+		"dev": "npm run start",
+		"start": "webpack-dev-server --hot --history-api-fallback --env.hot=true",
+		"watch": "webpack --progress --watch",
 		"build": "webpack",
+		"analyze": "webpack --env.analyze=true",
 		"lint": "\"./node_modules/.bin/eslint\" src",
 		"lint-fix": "\"./node_modules/.bin/eslint\" src --fix",
 		"test": "jest",
-		"test:watch": "npm test -- --watch"
+		"test:watch": "jest --watchAll",
+		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
+		"axe-prop-types": "^1.0.4",
 		"object-foreach": "^0.1.2",
 		"object.reduce": "^1.0.1",
+		"prop-types": "^15.6.0",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
-		"redux-ducklings": "^1.1.0"
+		"react-redux": "^5.0.6",
+		"redux": "^3.7.2",
+		"redux-ducklings": "^1.1.0",
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.0",
-		"babel-jest": "^21.2.0",
+		"babel-jest": "^22.4.1",
 		"babel-loader": "^7.1.2",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-polyfill": "^6.26.0",
 		"babel-preset-env": "^1.6.1",
 		"babel-preset-react": "^6.24.1",
 		"clean-webpack-plugin": "^0.1.17",
 		"copy-webpack-plugin": "^4.2.3",
 		"css-loader": "^0.28.7",
 		"enzyme": "^3.2.0",
+		"enzyme-adapter-react-16": "^1.1.0",
 		"eslint": "^4.12.1",
-		"eslint-plugin-react": "^7.5.1",
-		"eslint-sammy-preset": "^1.0.5",
-		"extract-text-webpack-plugin": "^3.0.2",
-		"glob": "^7.1.2",
-		"html-minifier": "^3.5.7",
-		"imagemin-webpack-plugin": "^1.5.2",
-		"jest": "^21.2.1",
-		"jsonminify": "^0.4.1",
+		"eslint-sammy-preset": "^3.1.0",
+		"extract-text-webpack-plugin": "^4.0.0-alpha.0",
+		"imagemin-webpack-plugin": "^2.0.0",
+		"jest": "^22.4.2",
 		"node-sass": "^4.7.2",
+		"open-browser-webpack-plugin": "^0.0.5",
 		"optimize-css-assets-webpack-plugin": "^3.2.0",
-		"react-test-renderer": "^16.2.0",
+		"react-hot-loader": "^4.0.0",
 		"sass-loader": "^6.0.6",
+		"style-loader": "^0.20.2",
 		"uglifyjs-webpack-plugin": "^1.1.2",
-		"url-loader": "^0.6.2",
-		"webpack": "^3.9.1",
-		"webpack-dev-server": "^2.9.5"
+		"url-loader": "^1.0.1",
+		"webpack": "^4.0.1",
+		"webpack-bundle-analyzer": "^2.9.1",
+		"webpack-cli": "^2.0.10",
+		"webpack-dev-server": "^3.1.0"
+	},
+	"jest": {
+		"moduleDirectories": [
+			"node_modules",
+			"src"
+		],
+		"setupTestFrameworkScriptFile": "<rootDir>/tests-config/setup.js"
 	}
 }

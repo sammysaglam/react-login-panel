@@ -1,3 +1,1 @@
-import ReactLoginPanel from './dist/react-login-panel.umd';
-
-export default ReactLoginPanel;
+module.exports = require('./dist/react-login-panel');

@@ -1,233 +1,247 @@
 import React from 'react';
-import reduce from 'object.reduce';
+import PropTypes from 'prop-types';
+
+const runOrPrint = value => (typeof value === 'function' ? value() : value);
 
 export default class SignupForm extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			customFields:{}
+			validating: false,
+			fieldValues: {}
 		};
 
 		this.onFieldChange = this.onFieldChange.bind(this);
+		this.validateField = this.validateField.bind(this);
 		this.validateAllFieldsAndSubmit = this.validateAllFieldsAndSubmit.bind(this);
-		this.onSubmit = this.onSubmit.bind(this);
 	}
 
-	onFieldChange(fieldId , newVal , validator) {
+	onFieldChange(fieldId, newVal, validator) {
+		const { fieldValues } = this.state;
 
-		// save field's new value to state
+		// save new value to state and mark isValid as pending
 		const newState = {
-			customFields:{
-				...this.state.customFields ,
-				[fieldId]:{
-					...this.state.customFields[fieldId] ,
-					value:newVal
+			fieldValues: {
+				...fieldValues,
+				[fieldId]: {
+					...fieldValues[fieldId],
+					value: newVal,
+					isValid: 'pending'
 				}
 			}
 		};
+		this.setState(newState);
 
-		// create callback if validator is async
-		const asyncCallback = jsonResponse => {
-
-			const currentValue = this.state.customFields[fieldId] && this.state.customFields[fieldId].value ? this.state.customFields[fieldId].value : '';
-
-			if ( jsonResponse.value === currentValue ) {
+		// validate field value
+		this.validateField({
+			fieldId,
+			value: newVal,
+			validator,
+			done: response => {
 				this.setState({
-					customFields:{
-						...this.state.customFields ,
-						[fieldId]:{
-							...this.state.customFields[fieldId] ,
-							isValid:jsonResponse.isValid
+					...newState,
+					fieldValues: {
+						...newState.fieldValues,
+						[fieldId]: {
+							...newState.fieldValues[fieldId],
+							isValid: response
 						}
 					}
 				});
 			}
-		};
-
-		// run user-defined validation function
-		const validationResult = validator(newVal , asyncCallback);
-
-		// check if validator is async
-		if ( typeof validationResult === 'object' ) {
-
-			// set new validity state to 'pending'
-			newState.customFields[fieldId].isValid = 'pending';
-
-		} else {
-
-			// no async, so we can safely update the state immediately
-			newState.customFields[fieldId].isValid = validationResult;
-		}
-
-		this.setState(newState);
+		});
 	}
 
-	validateAllFieldsAndSubmit(submitFn) {
+	validateField({ fieldId, value, validator, done }) {
+		const generateValidationId = ({ fieldId: field }) => {
+			if (!this.mostRecentValidationId) {
+				this.mostRecentValidationId = {};
+			}
 
-		const {formFields} = this.props;
-		let booleanValidators = true;
-		let asyncValidators = {};
-		let newState = {
-			customFields:{...this.state.customFields}
+			// increment the validation id tracker
+			if (this.mostRecentValidationId[field]) {
+				this.mostRecentValidationId[field]++;
+			} else {
+				this.mostRecentValidationId[field] = 1;
+			}
+
+			return this.mostRecentValidationId[field];
 		};
 
-		// a function to check if ready to submit
-		const passedValidation = () => booleanValidators && (() => {
+		const hasValidationExpired = ({ fieldId: field, validationId }) => validationId !== this.mostRecentValidationId[field];
 
-			return !reduce(asyncValidators , (failuresExist , state) => failuresExist || state.passed !== true , false);
+		const validationId = generateValidationId({ fieldId });
 
-		})();
-
-		formFields.forEach(field => {
-
-			// get current user input
-			const fieldValue = this.state.customFields[field.id] && this.state.customFields[field.id].value ? this.state.customFields[field.id].value : '';
-
-			// run validation function
-			const validationResult = field.validator(fieldValue);
-
-			// check if validationResult is a promise
-			if ( validationResult.then ) {
-
-				// add async validator to list
-				asyncValidators = {
-					...asyncValidators ,
-					[field.id]:{
-						value:fieldValue
-					}
-				};
-
-				// save response to list when ready
-				validationResult.then(response => response.json()).then(response => {
-
-					// update state to display errors to user
-					const newStateAsync = {
-						customFields:{
-							...this.state.customFields ,
-							[field.id]:{
-								...this.state.customFields[field.id] ,
-								isValid:response.isValid
-							}
-						}
-					};
-					this.setState(newStateAsync);
-
-					// store validity response
-					asyncValidators = {
-						...asyncValidators ,
-						[field.id]:{
-							passed:response.value === fieldValue && response.isValid === true
-						}
-					};
-
-					// if ready, then submit
-					if ( passedValidation() ) {
-						submitFn();
-					}
-				});
-
-			} else {
-				booleanValidators = booleanValidators && validationResult === true;
-
-				// update state to display errors to user
-				newState = {
-					customFields:{
-						...newState.customFields ,
-						[field.id]:{
-							value:fieldValue ,
-							isValid:validationResult
-						}
-					}
-				};
+		// run user-defined validation function
+		const validationResult = validator(value, response => {
+			if (
+				!hasValidationExpired({
+					fieldId,
+					validationId
+				})
+			) {
+				done(response);
 			}
 		});
 
-		// save new state
-		this.setState(newState);
-
-		// if ready, then submit
-		if ( passedValidation() ) {
-			submitFn();
+		// if not async, return validation result to done callback
+		if (!validationResult.then) {
+			if (
+				!hasValidationExpired({
+					fieldId,
+					validationId
+				})
+			) {
+				done(validationResult);
+			}
 		}
 	}
 
-	onSubmit(event) {
-		event.preventDefault();
+	validateAllFieldsAndSubmit() {
+		const { formFields, onSubmitForm } = this.props;
+		const { fieldValues } = this.state;
 
-		this.validateAllFieldsAndSubmit(() => {
-			this.props.submitForm(this.state.customFields);
+		const numberOfFields = formFields.length;
+		let validFieldsCount = 0;
+		let parsedFieldsCount = 0;
+		let newState = {
+			validating: true,
+			fieldValues
+		};
+		this.setState(newState);
+
+		formFields.forEach(({ id: fieldId, validator }) => {
+			const fieldValue = fieldValues[fieldId] && fieldValues[fieldId].value ? fieldValues[fieldId].value : '';
+
+			// validate field value
+			this.validateField({
+				fieldId,
+				value: fieldValue,
+				validator,
+				done: response => {
+					newState = {
+						...newState,
+						fieldValues: {
+							...newState.fieldValues,
+							[fieldId]: {
+								...newState.fieldValues[fieldId],
+								isValid: response
+							}
+						}
+					};
+
+					// response is valid
+					if (response === true) {
+						validFieldsCount++;
+					}
+
+					// increment parsed fields
+					parsedFieldsCount++;
+
+					// check if finished
+					const validationFinished = parsedFieldsCount === numberOfFields;
+
+					if (validationFinished) {
+						this.setState({
+							...newState,
+							validating: false
+						});
+
+						const allAreValid = validFieldsCount === parsedFieldsCount;
+						if (allAreValid) {
+							onSubmitForm(newState.fieldValues);
+						}
+					}
+				}
+			});
 		});
 	}
 
 	render() {
-		const {showFormTitles , lang , formFields , showSignupForm} = this.props;
-		const {customFields} = this.state;
-		const {onSubmit , onFieldChange} = this;
+		const { areFormTitlesVisible, lang, formFields, isSignupFormVisible, signingUp } = this.props;
+		const { validating, fieldValues } = this.state;
+		const { onFieldChange } = this;
 
 		const classNames = [
-			'signup-form' ,
-			showSignupForm ? 'show' : null
-		].filter(className => className).join(' ');
+			'react-login-panel__form',
+			'react-login-panel__form--signup',
+			isSignupFormVisible ? 'react-login-panel__form--show' : null
+		]
+			.filter(isNotEmpty => isNotEmpty)
+			.join(' ');
 
 		return (
 			<div className={classNames}>
-				{showFormTitles && <h2>{lang.signup}</h2>}
-				<form onSubmit={onSubmit}>
-					{
-						formFields.map(({id , element , validator , errorFeedbackElement}) => {
+				{areFormTitlesVisible && <h2>{runOrPrint(lang.signup)}</h2>}
+				<form
+					onSubmit={event => {
+						event.preventDefault();
+						this.validateAllFieldsAndSubmit();
+					}}
+				>
+					{formFields.map(({ id: fieldId, element, validator, errorFeedbackElement }) => {
+						const validityPending = fieldValues[fieldId] && fieldValues[fieldId].isValid === 'pending';
+						const hasErrors = !validityPending && fieldValues[fieldId] && fieldValues[fieldId].isValid !== true;
+						const errorCode = hasErrors && fieldValues[fieldId].isValid;
 
-							const validityPending = customFields[id] && customFields[id].isValid === 'pending';
-							const hasErrors = !validityPending && customFields[id] && customFields[id].isValid !== true;
-							const errorCode = hasErrors && customFields[id].isValid;
+						const fieldClassNames = [
+							'react-login-panel__input',
+							validityPending ? 'react-login-panel__input--pending' : null,
+							hasErrors ? 'react-login-panel__input--error' : null
+						]
+							.filter(className => className)
+							.join(' ');
 
-							const fieldClassNames = [
-								validityPending ? 'pending' : null ,
-								hasErrors ? 'error' : null
-							].filter(className => className).join(' ');
-
-							return (
-								<React.Fragment key={id}>
-									{
-
-										typeof element === 'function' ?
-
-											element({
-												onChange:newVal => {
-													onFieldChange(id , newVal , validator);
+						return (
+							<React.Fragment key={fieldId}>
+								{typeof element === 'function'
+									? element({
+											onChange: newVal => {
+												onFieldChange(fieldId, newVal, validator);
+											},
+											pendingValidation: validityPending,
+											disabled: validating || signingUp
+									  })
+									: React.cloneElement(element, {
+											className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
+											onChange: event => {
+												onFieldChange(fieldId, event.target.value, validator);
+												if (typeof element.props.onChange === 'function') {
+													element.props.onChange(event);
 												}
-											})
-
-											:
-
-											React.cloneElement(
-												element ,
-												{
-													className:(
-														(
-															(element.props.className ? (element.props.className + ' ') : '') + fieldClassNames
-
-														).trim()
-													) ,
-													onChange:event => {
-														onFieldChange(id , event.target.value , validator);
-														if ( typeof element.props.onChange === 'function' ) {
-															element.props.onChange(event);
-														}
-													}
-												}
-											)
-									}
-									{
-										hasErrors ? errorFeedbackElement(errorCode) : null
-									}
-								</React.Fragment>
-							);
-						})
-					}
-					<input type="submit" value={lang.signup}/>
+											},
+											disabled: validating || signingUp
+									  })}
+								{hasErrors ? errorFeedbackElement(errorCode) : null}
+							</React.Fragment>
+						);
+					})}
+					<input type="submit" value={runOrPrint(lang.signup)} />
 				</form>
 			</div>
 		);
 	}
 }
+
+SignupForm.propTypes = {
+	areFormTitlesVisible: PropTypes.bool,
+	formFields: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			element: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+			validator: PropTypes.func.isRequired,
+			errorFeedbackElement: PropTypes.func.isRequired
+		})
+	).isRequired,
+	isSignupFormVisible: PropTypes.bool.isRequired,
+	lang: PropTypes.shape({
+		signup: PropTypes.string.isRequired
+	}).isRequired,
+	onSubmitForm: PropTypes.func.isRequired,
+	signingUp: PropTypes.bool.isRequired
+};
+
+SignupForm.defaultProps = {
+	areFormTitlesVisible: true
+};

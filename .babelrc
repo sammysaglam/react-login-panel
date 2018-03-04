@@ -1,9 +1,25 @@
 {
 	"presets":[
-		"env" ,
+		[
+			"env" ,
+			{
+				"modules":false
+			}
+		] ,
 		"react"
 	] ,
 	"plugins":[
+		"react-hot-loader/babel" ,
 		"transform-object-rest-spread"
-	]
+	] ,
+	"env":{
+		"test":{
+			"presets":[
+				[
+					"env"
+				] ,
+				"react"
+			]
+		}
+	}
 }

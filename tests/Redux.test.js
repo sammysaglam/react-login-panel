@@ -1,36 +1,34 @@
-import * as ReactLoginPanelRedux from '../src/ReactLoginPanel.redux';
+import * as LibraryRedux from '../src/ReactLoginPanel.redux';
 
-describe('ReactLoginPanel Redux Reducer' , () => {
-	it('should return the initial state' , () => {
-		expect(ReactLoginPanelRedux.reducer(undefined , {})).toEqual({
-			showLoginForm:false ,
-			showSignupForm:false
+/* eslint-disable no-undef */
+describe('Library reducer', () => {
+	it('should return the initial state', () => {
+		expect(LibraryRedux.reducer(undefined, {})).toEqual({
+			integerValue: 8
 		});
 	});
 
-	it('should increment "integerValue" by 1' , () => {
-
+	it('should increment "integerValue" by 1', () => {
 		const mockInitialState = {
-			integerValue:92
+			integerValue: 92
 		};
 
 		const mockAction = {
-			type:ReactLoginPanelRedux.ACTIONS.INCREMENT
+			type: LibraryRedux.ACTIONS.INCREMENT
 		};
 
-		expect(ReactLoginPanelRedux.reducer(mockInitialState , mockAction)).toEqual({
-			integerValue:93
+		expect(LibraryRedux.reducer(mockInitialState, mockAction)).toEqual({
+			integerValue: 93
 		});
 	});
 });
 
-describe('Library action creators' , () => {
-	it('should create an action to increment the value by 1' , () => {
-
+describe('Library action creators', () => {
+	it('should create an action to increment the value by 1', () => {
 		const expectedAction = {
-			type:ReactLoginPanelRedux.ACTIONS.INCREMENT
+			type: LibraryRedux.ACTIONS.INCREMENT
 		};
 
-		expect(ReactLoginPanelRedux.actionCreators().increment()).toEqual(expectedAction);
+		expect(LibraryRedux.actionCreators().increment()).toEqual(expectedAction);
 	});
 });
