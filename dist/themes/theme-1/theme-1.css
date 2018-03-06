@@ -10,7 +10,7 @@
     font-weight: bold;
     text-decoration: underline; }
 
-.react-login-panel input {
+.react-login-panel input[type="text"] {
   width: 100%; }
 
 .react-login-panel__forms {

@@ -16,6 +16,8 @@ const USERNAME_MAX_LENGTH = 10;
 const PASSWORD_MIN_LENGTH = 5;
 const NAME_MAX_LENGTH = 20;
 
+const DID_NOT_ACCEPT_TO_SIGNUP_TO_NEWSLETTER = 11;
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -66,11 +68,44 @@ class App extends React.Component {
 					loginFormFields={[
 						{
 							id: 'username',
+							defaultValue: 'a_default_value',
 							element: <input placeholder="Username" />
-						} ,
+						},
 						{
 							id: 'password',
-							element: <input placeholder="Password" type="password" />
+							element: ({ onChange, value, disabled }) => (
+								<input
+									disabled={disabled}
+									onChange={({ target }) => {
+										console.log('password changed to:', target.value);
+
+										onChange(target.value);
+									}}
+									placeholder="Password"
+									type="password"
+									value={value}
+								/>
+							)
+						},
+						{
+							id: 'csrfToken',
+							defaultValue: '23498adgfisfdghnb',
+							element: ({ onChange, value }) => (
+								<div>
+									<br />CSRF token:
+									<input
+										disabled={true}
+										onChange={({ target }) => {
+											onChange(target.value);
+										}}
+										placeholder="csrf"
+										type="text"
+										value={value}
+									/>
+									<br />
+									<br />
+								</div>
+							)
 						}
 					]}
 					onSubmitLoginForm={() => alert('Logged in!')}
@@ -182,6 +217,21 @@ class App extends React.Component {
 										return <div>Unknown Error</div>;
 								}
 							}
+						},
+						{
+							id: 'subscribe-to-newsletter',
+							defaultValue: false,
+							element: ({ onChange, value }) => (
+								<div>
+									<input checked={value} onChange={({ target }) => onChange(target.checked)} type="checkbox" /> Subscribe to newsletter
+								</div>
+							),
+							validator: val => val || DID_NOT_ACCEPT_TO_SIGNUP_TO_NEWSLETTER,
+							errorFeedbackElement: () => (
+								<div>
+									<strong>You must subscribe!</strong>
+								</div>
+							)
 						}
 					]}
 					toggleLoginForm={toggleLoginForm}

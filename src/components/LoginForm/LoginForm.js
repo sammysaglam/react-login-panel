@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import reduce from 'object.reduce';
 
 const runOrPrint = value => (typeof value === 'function' ? value() : value);
 
@@ -8,7 +9,14 @@ export default class LoginForm extends React.Component {
 		super(props);
 
 		this.state = {
-			fieldValues: {}
+			fieldValues: reduce(
+				props.formFields,
+				(concatenated, { id, defaultValue }) => ({
+					...concatenated,
+					[id]: defaultValue ? defaultValue : ''
+				}),
+				{}
+			)
 		};
 
 		this.onFieldChange = this.onFieldChange.bind(this);
@@ -38,6 +46,7 @@ export default class LoginForm extends React.Component {
 
 	render() {
 		const { areFormTitlesVisible, lang, formFields, isLoginFormVisible, loggingIn, loginFailed } = this.props;
+		const { fieldValues } = this.state;
 		const { onSubmit, onFieldChange } = this;
 
 		const classNames = [
@@ -62,9 +71,11 @@ export default class LoginForm extends React.Component {
 										onChange: newVal => {
 											onFieldChange(id, newVal);
 										},
+										value: fieldValues[id],
 										disabled: loggingIn
 								  })
 								: React.cloneElement(element, {
+										value: fieldValues[id],
 										onChange: event => {
 											onFieldChange(id, event.target.value);
 											if (typeof element.props.onChange === 'function') {

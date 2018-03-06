@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import reduce from 'object.reduce';
 
 const runOrPrint = value => (typeof value === 'function' ? value() : value);
 
@@ -9,7 +10,16 @@ export default class SignupForm extends React.Component {
 
 		this.state = {
 			validating: false,
-			fieldValues: {}
+			fieldValues: reduce(
+				props.formFields,
+				(concatenated, { id, defaultValue }) => ({
+					...concatenated,
+					[id]: {
+						value: defaultValue ? defaultValue : ''
+					}
+				}),
+				{}
+			)
 		};
 
 		this.onFieldChange = this.onFieldChange.bind(this);
@@ -163,11 +173,7 @@ export default class SignupForm extends React.Component {
 		const { validating, fieldValues } = this.state;
 		const { onFieldChange } = this;
 
-		const classNames = [
-			'react-login-panel__form',
-			'react-login-panel__form--signup',
-			isSignupFormVisible ? 'react-login-panel__form--show' : null
-		]
+		const classNames = ['react-login-panel__form', 'react-login-panel__form--signup', isSignupFormVisible ? 'react-login-panel__form--show' : null]
 			.filter(isNotEmpty => isNotEmpty)
 			.join(' ');
 
@@ -182,7 +188,7 @@ export default class SignupForm extends React.Component {
 				>
 					{formFields.map(({ id: fieldId, element, validator, errorFeedbackElement }) => {
 						const validityPending = fieldValues[fieldId] && fieldValues[fieldId].isValid === 'pending';
-						const hasErrors = !validityPending && fieldValues[fieldId] && fieldValues[fieldId].isValid !== true;
+						const hasErrors = !validityPending && typeof fieldValues[fieldId].isValid !== 'undefined' && fieldValues[fieldId].isValid !== true;
 						const errorCode = hasErrors && fieldValues[fieldId].isValid;
 
 						const fieldClassNames = [
@@ -200,11 +206,13 @@ export default class SignupForm extends React.Component {
 											onChange: newVal => {
 												onFieldChange(fieldId, newVal, validator);
 											},
+											value: fieldValues[fieldId].value,
 											pendingValidation: validityPending,
 											disabled: validating || signingUp
 									  })
 									: React.cloneElement(element, {
 											className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
+											value: fieldValues[fieldId].value,
 											onChange: event => {
 												onFieldChange(fieldId, event.target.value, validator);
 												if (typeof element.props.onChange === 'function') {
