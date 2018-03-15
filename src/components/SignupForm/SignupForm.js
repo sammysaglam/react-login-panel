@@ -177,6 +177,8 @@ export default class SignupForm extends React.Component {
 			.filter(isNotEmpty => isNotEmpty)
 			.join(' ');
 
+		const formDisabled = validating || signingUp;
+
 		return (
 			<div className={classNames}>
 				{areFormTitlesVisible && <h2>{runOrPrint(lang.signup)}</h2>}
@@ -208,7 +210,7 @@ export default class SignupForm extends React.Component {
 											},
 											value: fieldValues[fieldId].value,
 											pendingValidation: validityPending,
-											disabled: validating || signingUp
+											disabled: formDisabled
 									  })
 									: React.cloneElement(element, {
 											className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
@@ -219,13 +221,13 @@ export default class SignupForm extends React.Component {
 													element.props.onChange(event);
 												}
 											},
-											disabled: validating || signingUp
+											disabled: formDisabled
 									  })}
 								{hasErrors ? errorFeedbackElement(errorCode) : null}
 							</React.Fragment>
 						);
 					})}
-					<input type="submit" value={runOrPrint(lang.signup)} />
+					<input disabled={formDisabled} type="submit" value={runOrPrint(lang.signup)} />
 				</form>
 			</div>
 		);

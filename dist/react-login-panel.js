@@ -1144,6 +1144,8 @@ var SignupForm = function (_React$Component) {
 				return isNotEmpty;
 			}).join(' ');
 
+			var formDisabled = validating || signingUp;
+
 			return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
 				'div',
 				{ className: classNames },
@@ -1183,7 +1185,7 @@ var SignupForm = function (_React$Component) {
 								},
 								value: fieldValues[fieldId].value,
 								pendingValidation: validityPending,
-								disabled: validating || signingUp
+								disabled: formDisabled
 							}) : react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(element, {
 								className: ((element.props.className ? element.props.className + ' ' : '') + fieldClassNames).trim(),
 								value: fieldValues[fieldId].value,
@@ -1193,12 +1195,12 @@ var SignupForm = function (_React$Component) {
 										element.props.onChange(event);
 									}
 								},
-								disabled: validating || signingUp
+								disabled: formDisabled
 							}),
 							hasErrors ? errorFeedbackElement(errorCode) : null
 						);
 					}),
-					react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { type: 'submit', value: runOrPrint(lang.signup) })
+					react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { disabled: formDisabled, type: 'submit', value: runOrPrint(lang.signup) })
 				)
 			);
 		}
