@@ -49,7 +49,10 @@ const buildExample = ({ outputPath, isHotLoaderEnv }) => {
 			rules: [
 				{
 					test: /\.js$/,
-					loader: 'babel-loader',
+					use: {
+						loader: 'babel-loader',
+						options: { plugins: isHotLoaderEnv ? ['react-hot-loader/babel'] : [] }
+					},
 					exclude: /node_modules/
 				},
 				{
