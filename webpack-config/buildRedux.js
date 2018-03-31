@@ -41,7 +41,7 @@ const buildReduxLibrary = ({ outputPath, isMinified }) => ({
 		alias: {
 			// eslint-disable-next-line no-undef
 			'prop-types$': path.join(__dirname, '../node_modules/axe-prop-types'),
-			'../prop-types$': path.join(__dirname, '../node_modules/prop-types')
+			'../prop-types/factoryWithTypeCheckers$': path.join(__dirname, '../node_modules/prop-types/factoryWithTypeCheckers')
 		}
 	}
 });
