@@ -22,7 +22,7 @@
 		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
-		"axe-prop-types": "^1.0.6",
+		"axe-prop-types": "^1.0.7",
 		"object-foreach": "^0.1.2",
 		"object.reduce": "^1.0.1",
 		"prop-types": "^15.6.0",
